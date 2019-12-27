@@ -8,8 +8,8 @@ const App: React.FC = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          You are hacked.
-          Edit <code>src/App.tsx</code> and save to reload. new text.
+          You are hacked. Kenny you are not allowed to do merge conflics in the rest of your life!
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
