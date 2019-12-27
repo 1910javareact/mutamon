@@ -8,7 +8,6 @@ const App: React.FC = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          You are hacked.
           Edit <code>src/App.tsx</code> and save to reload. new text.
         <a
           className="App-link"
