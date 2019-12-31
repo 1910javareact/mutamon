@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> MutaMon!!!!!!!!!!!!!!!!!!!!!!
+          <code>Mutamon</code> and save to reload. new text. even newer test
         </p>
         <a
           className="App-link"
