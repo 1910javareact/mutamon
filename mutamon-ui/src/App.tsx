@@ -10,10 +10,10 @@ import { store } from './store';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <BattleComponent />
       <Provider store={store}>
         <Router>
           <Switch>
+            <Route path='/battle' component={BattleComponent}></Route>
             <Route path='/test' component={HallOfFamePageComponent}></Route>
             <Route path='/' component={HallOfFamePageComponent}></Route>
           </Switch>
