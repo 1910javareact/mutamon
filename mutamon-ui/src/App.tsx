@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { HallOfFamePageComponent } from './components/hall-of-fame-page-component/HallOfFamePageComponent';
+import  HallOfFamePageComponent  from './components/hall-of-fame-page-component/HallOfFamePageContainer';
 import { store } from './store';
 
 const App: React.FC = () => {
@@ -12,6 +12,7 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route path='/test' component={HallOfFamePageComponent}></Route>
+            <Route path='/hof' component={HallOfFamePageComponent}></Route>
             <Route path='/' component={HallOfFamePageComponent}></Route>
           </Switch>
         </Router>
