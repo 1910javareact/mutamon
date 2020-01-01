@@ -3,6 +3,7 @@ import { NavbarComponent } from '../navbar-component/NavbarComponent'
 import { User } from '../../models/user'
 import { Monster } from '../../models/monster'
 import { WinnersDisplayComponent } from './winners-display-component/WinnersDisplayComponent'
+import { mutamonApiGetWinningMonstersById } from '../../remote/mutamon-clients/mutamon-mutamon'
 
 interface IHallOfFamePageComponentState{
     winners: Monster[]
