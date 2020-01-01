@@ -23,13 +23,13 @@ export class HallOfFamePageComponent extends React.Component<IHallOfFamePageComp
 
     async componentDidMount(){
         try{
-            //let winners = await mutamonApiGetWinningMonstersById(this.props.user.userId)
-            // if(winners.status === 200){
-            //     this.setState({
-            //         ...this.state,
-            //         winners: winners.body
-            //     })
-            // }
+            let winners = await mutamonApiGetWinningMonstersById(this.props.user.userId)
+            if(winners.status === 200){
+                this.setState({
+                    ...this.state,
+                    winners: winners.body
+                })
+            }
         } catch {
 
         }
