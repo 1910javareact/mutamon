@@ -1,31 +1,90 @@
 import React from 'react'
-import { Progress } from 'reactstrap'
+import { Progress, Button, Table } from 'reactstrap'
 
-export class BattleComponent extends React.Component<any,any>{
+export class BattleComponent extends React.Component<any, any>{
 
 
-    render(){
-        return(
-            <div>
-      <div className="text-center">0%</div>
-      <Progress />
-      <div className="text-center">25%</div>
-      <Progress value="25" />
-      <div className="text-center">50%</div>
-      <Progress value={50} />
-      <div className="text-center">75%</div>
-      <Progress value={75} />
-      <div className="text-center">100%</div>
-      <Progress value="100" />
-      <div className="text-center">Multiple bars</div>
-      <Progress multi>
-        <Progress bar value="15" />
-        <Progress bar color="success" value="30" />
-        <Progress bar color="info" value="25" />
-        <Progress bar color="warning" value="20" />
-        <Progress bar color="danger" value="5" />
-      </Progress>
-    </div>
+    render() {
+        return (
+            <div className="battlePage" id="battlePage">
+
+                {/* Player side of page */}
+                <div className="playerSide" id="playerSide">
+
+                    <p className="playerTitle" id="playerTitle">
+                        <h2>Player</h2>
+                    </p>
+
+                    
+                    {/* Players Current stats */}
+                    <Table borderless className="playerStats" id="playerStats">
+                        <thead>
+                            <tr>
+                                <th>Strength</th>
+                                <th>Agility</th>
+                                <th>Defence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">0</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+
+                    {/* Player health bar */}
+                    <div className="playerHealth" id="playerHealth">
+                        100%
+                    </div>
+                    <Progress value="100" />
+
+                    {/* Run away button */}
+                    <br/>
+                    <Button color="warning" className="btnRun" id="btnRun">
+                        <h4>Run Away</h4>
+                    </Button>{' '}
+                </div>
+
+                <div>
+                    
+                </div>
+
+                <div className="opponentSide" id="opponentSide">
+                    {/* Opponent side of page */}
+
+                    <br />
+                    <p className="opponentTitle" id="opponentTitle">
+                        <h2>Opponent</h2>
+                    </p>
+
+                    {/* Opponents stats */}
+                    <Table borderless className="opponentStats" id="opponentStats">
+                        <thead>
+                            <tr>
+                                <th>Strength</th>
+                                <th>Agility</th>
+                                <th>Defence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">0</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+
+                    {/* Opponent health bar */}
+
+                    <div className="oppenentHealth" id="opponentHealth">
+                        100%
+                    </div>
+                    <Progress value="100" />
+                </div>
+            </div>
         )
     }
 }
