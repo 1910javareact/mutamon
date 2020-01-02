@@ -1,5 +1,6 @@
 import { mutamonUserLogin } from "../remote/mutamon-clients/mutamon-users"
-import { mutamonApiGetCurrentMonsterById } from "../remote/mutamon-clients/mutamon-mutamon"
+import { mutamonApiGetCurrentMonsterById, mutamonApiUpdateMonster } from "../remote/mutamon-clients/mutamon-mutamon"
+import { Monster } from "../models/monster"
 
 export const userLoginTypes = {
     INVALID_CREDENTIALS: 'MM_LOGIN_INVALID_CREDENTIALS',
@@ -7,7 +8,9 @@ export const userLoginTypes = {
     UNSUCCESSFUL_LOGIN: 'MM_LOGIN_UNSUCCESSFUL_LOGIN',
     STATE_CLEARED: 'STATE_CLEARED',
     SUCCESSFUL_GET_CURRENT_MUTAMON: 'CURRENT_MM_RECIEVED',
-    UNSUCCESSFUL_GET_CURRENT_MUTAMON: 'CURRENT_MM_NOT_RECIEVED'
+    UNSUCCESSFUL_GET_CURRENT_MUTAMON: 'CURRENT_MM_NOT_RECIEVED',
+    MUTAMON_UPDATED: 'MUTAMON_UPDATED',
+    MUTAMON_FAILED_TO_UPDATE: 'MUTAMON_FAILED_TO_UPDATE'
 }
 
 export const userLogin = (username: string, password: string) => async (dispatch: any) => {
@@ -25,12 +28,12 @@ export const userLogin = (username: string, password: string) => async (dispatch
                 type: userLoginTypes.INVALID_CREDENTIALS
             })
         }
-    }catch(e){
+    } catch (e) {
         dispatch({
-            type:userLoginTypes.UNSUCCESSFUL_LOGIN
+            type: userLoginTypes.UNSUCCESSFUL_LOGIN
         })
     }
-    
+
 }
 
 export const currentUserMutamon = (userId: number) => async (dispatch: any) => {
@@ -43,19 +46,49 @@ export const currentUserMutamon = (userId: number) => async (dispatch: any) => {
                     currentMutamon: res.body,
                 }
             })
+        } else {
+            dispatch({
+                type: userLoginTypes.UNSUCCESSFUL_GET_CURRENT_MUTAMON
+            })
         }
-    }catch(e){
+    } catch (e) {
         dispatch({
-            type:userLoginTypes.UNSUCCESSFUL_GET_CURRENT_MUTAMON
+            type: userLoginTypes.UNSUCCESSFUL_GET_CURRENT_MUTAMON
         })
     }
-    
+
 }
 
-export const clearState = () => {    
-    return{
+export const clearState = () => {
+    return {
         type: userLoginTypes.STATE_CLEARED,
         payload: {
         }
+    }
+}
+
+export const updateCurrentMutamon = (monster: Monster) => async (dispatch: any) => {
+    try {
+        let res = await mutamonApiUpdateMonster(monster)
+        if (res.status === 201) {
+            dispatch({
+                type: userLoginTypes.MUTAMON_UPDATED,
+                payload: {
+                    currentMutamon: monster
+                }
+            })
+        } else {
+            dispatch({
+                type: userLoginTypes.MUTAMON_FAILED_TO_UPDATE
+            })
+        }
+    } catch (e) {
+        dispatch({
+            type: userLoginTypes.MUTAMON_FAILED_TO_UPDATE
+        })
+    }
+
+    return {
+
     }
 }

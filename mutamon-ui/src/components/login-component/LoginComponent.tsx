@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import { User } from '../../models/user'
+import './login.css'
 
 interface ILoginComponentProps {
     user: User
@@ -71,7 +72,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
                 <Form onSubmit={this.submitLogin} className='login-form'>
                     <FormGroup row className="text-input">
-                        <Label for="exampleUsername" sm={2}>Username: </Label>
+                        <Label for="exampleUsername" id="" sm={2}>Username: </Label>
                         <Col sm={10}>
                             <Input
                                 type="text"
