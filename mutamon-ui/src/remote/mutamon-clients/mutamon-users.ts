@@ -1,9 +1,14 @@
 import { mutamonClient } from "./mutamon-client";
 
-export async function mutamonApiGetWinningMonstersById(userId: number){
+export async function mutamonUserLogin(username: string, password: string){
+
+    const credentials = {
+        username,
+        password
+    }
 
     try{
-        const response = await mutamonClient.get('/mutamon/hof/userid/' + userId)
+        let response = await mutamonClient.post('users/login', credentials)
         if(response.status === 200){
             return{
                 status: response.status,
@@ -20,5 +25,4 @@ export async function mutamonApiGetWinningMonstersById(userId: number){
         console.log(e);
         throw new Error('Something Went Wrong')
     }
-
 }
