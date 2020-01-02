@@ -1,0 +1,13 @@
+#FightButton{
+    height:360px;
+    width:360px;
+    font-size: 110px;
+    margin: 15%;
+    
+}
+#profilepic{
+    height:200px;
+    width:200px;
+    border-radius: 50%;
+    margin: 5%;
+}
