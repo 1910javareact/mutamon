@@ -120,7 +120,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                                 <div className="oppenentHealth" id="opponentHealth">
                                     100%
-                            </div>
+                                </div>
                                 <Progress value="100" />
                             </div>
                         </Col>

@@ -1,7 +1,8 @@
 #battlePage {
-    margin-top: 15%;
+    margin-top: flex-box;
 }
 
 #btnRun{
     font-size: 160pt;
 }
+
