@@ -79,8 +79,8 @@ render(){
 
                     <Row>
                         <Col>
-                    <div className="text-center">25%</div>
-                            <Progress value="25" />
+                    
+                            <Progress id="xpbar" value="60" >60%</Progress>
                          </Col>
                 </Row>
                     </Container>
