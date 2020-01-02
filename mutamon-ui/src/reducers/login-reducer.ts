@@ -34,6 +34,12 @@ export const loginReducer = (state = initialState, action:any)=>{
                 currentMutamon: initialState.currentMutamon
             }
         }
+        case userLoginTypes.MUTAMON_UPDATED:{
+            return{
+                ...state,
+                currentMutamon: action.payload.currentMutamon
+            }
+        }
         default:
             return state
     }
