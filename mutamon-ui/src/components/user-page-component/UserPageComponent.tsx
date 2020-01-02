@@ -70,6 +70,10 @@ render(){
                     <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" >
                     Next Fight
                     </Button>
+                    <Button className="Restartbutton" id="Restartbutton" variant="Next Fight" size="lg" >
+                    Restart
+                    </Button>
+
                     </Col>
                     </Row>
 

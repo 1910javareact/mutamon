@@ -11,6 +11,12 @@ export interface ILoginState {
     user: User
 }
 
+export interface IState {
+    login: ILoginState
+
+}
+
 export const state = combineReducers <IState>({
             login: loginReducer
+
 })
