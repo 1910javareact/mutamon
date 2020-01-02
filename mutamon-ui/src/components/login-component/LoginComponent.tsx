@@ -6,7 +6,7 @@ import { User } from '../../models/user'
 interface ILoginComponentProps {
     user: User
     userLogin: (username: string, password: string) => void
-    //userMonster function
+    currentUserMutamon: (userId: number) => void
 }
 
 export class LoginComponent extends React.Component<ILoginComponentProps, any>{
@@ -38,8 +38,8 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     submitLogin = async (e: SyntheticEvent) => {
         e.preventDefault()
         await this.props.userLogin(this.state.username, this.state.password)
-        //await monster function
         if (this.props.user.userId) {
+            await this.props.currentUserMutamon(this.props.user.userId)
             this.setState({
                 ...this.state,
                 userLogedIn: true
@@ -54,7 +54,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     }
 
     goToHome = () => {
-        return (<Redirect to='/user'/>)
+        return (<Redirect to='/test'/>)
     }
 
     wrongUserOrPass = () => {
