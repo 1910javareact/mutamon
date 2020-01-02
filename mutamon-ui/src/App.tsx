@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BattleComponent } from './components/battle-component/BattleComponents';
+import  BattleComponent  from './components/battle-component/BattleContainer';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
