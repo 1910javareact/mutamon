@@ -1,6 +1,6 @@
 import React from 'react'
 import { Progress, Button, Table, Jumbotron, Container, Row, Col } from 'reactstrap'
-import './battleComponent.css'
+import './battle-component.css'
 import { User } from '../../models/user'
 import { Monster } from '../../models/monster'
 import { Mutation } from '../../models/mutation'
