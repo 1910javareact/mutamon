@@ -3,7 +3,7 @@ import { mutamonClient } from "./mutamon-client";
 export async function mutamonApiGetWinningMonstersById(userId: number){
 
     try{
-        const response = await mutamonClient.get('/mutamon/hof/userId/' + userId)
+        const response = await mutamonClient.get('/mutamon/hof/userid/' + userId)
         if(response.status === 200){
             return{
                 status: response.status,

@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { BattleComponent } from './components/battle-component/BattleComponents';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -10,7 +9,6 @@ import { store } from './store';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <BattleComponent />
       <Provider store={store}>
         <Router>
           <Switch>
