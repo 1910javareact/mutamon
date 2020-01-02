@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import  BattleComponent  from './components/battle-component/BattleContainer';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Router>
           <Switch>
+            <Route path='/battle' component={BattleComponent}></Route>
             <Route path='/test' component={HallOfFamePageComponent}></Route>
             <Route path='/hof' component={HallOfFamePageComponent}></Route>
             <Route path='/' component={HallOfFamePageComponent}></Route>
