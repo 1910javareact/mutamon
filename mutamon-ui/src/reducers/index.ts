@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import { User } from "../models/user";
 import { loginReducer } from "./login-reducer";
+import { Monster } from "../models/monster";
 
 export interface ILoginState {
-    user: User
+    user: User,
+    currentMutamon: Monster
 }
 
 export interface IState {
