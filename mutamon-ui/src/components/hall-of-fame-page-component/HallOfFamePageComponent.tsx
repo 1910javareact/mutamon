@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavbarComponent } from '../navbar-component/NavbarComponent'
+import  NavbarComponent  from '../navbar-component/NavbarContainer'
 import { User } from '../../models/user'
 import { Monster } from '../../models/monster'
 import { WinnersDisplayComponent } from './winners-display-component/WinnersDisplayComponent'
