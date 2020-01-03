@@ -4,6 +4,30 @@ import { Redirect } from 'react-router-dom'
 import { User } from '../../models/user'
 import './login.css'
 
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
+
+
+
+
+
+function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+          Mutamon
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+
+
+  
+
 interface ILoginComponentProps {
     user: User
     userLogin: (username: string, password: string) => void
@@ -21,6 +45,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
             invalidCredentials: false
         }
     }
+
 
     updateUsername = (input: any) => {
         this.setState({
@@ -66,19 +91,29 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
         )
     }
 
+
+
+
     render() {
         return (
+                
             <div id="login-div">
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
+
+                        <Typography component="h1" variant="h5">
+                       Mutamon Sign In Page
+                        </Typography>
+                        <br/>
+
                 <Form onSubmit={this.submitLogin} className='login-form'>
                     <FormGroup row className="text-input">
                         <Label for="exampleUsername" id="" sm={2}>Username: </Label>
-                        <Col sm={10}>
+                        <Col sm={5}>
                             <Input
                                 type="text"
                                 name="Username"
                                 id="exampleUsername"
-                                placeholder="username"
+                                placeholder="Username *"
                                 value={this.state.username}
                                 onChange={this.updateUsername}
                             />
@@ -87,22 +122,33 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                     <br/>
                     <FormGroup row className="text-input">
                         <Label for="examplePassword" sm={2}>Password: </Label>
-                        <Col sm={10}>
+                        <Col sm={5}>
                             <Input
                                 type="password"
+                                required
                                 name="Password"
                                 id="examplePassword"
-                                placeholder="password"
+                                placeholder="Password *"
                                 value={this.state.password}
                                 onChange={this.updatePassword}
                             />
                         </Col>
                     </FormGroup>
-                    <Button color="primary">Login</Button>
+                                    <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >
+                            Sign In
+                        </Button>
                 </Form>
                 {this.state.userLogedIn && this.goToHome()}
+                <Box mt={8}>
+                    <Copyright />
+                </Box>
 
             </div>
         )
-    }
+    }      
 }
