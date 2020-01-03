@@ -5,7 +5,8 @@ import { Monster } from "../models/monster";
 
 const initialState: ILoginState = {
     user: new User(0,'',''),
-    currentMutamon: new Monster(0,0,0,'',0,false,[])
+    currentMutamon: new Monster(0,0,0,'',0,false,[]),
+    
 }
 
 export const loginReducer = (state = initialState, action:any)=>{

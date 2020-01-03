@@ -9,26 +9,28 @@ import Monster2 from '../../assests/monster2.jpg'
 
 interface IBattleComponentProps {
     user: User
-    monster: Monster
-    opponent: Monster
+    currentMutamon: Monster
+    opponentMutamon: Monster
 }
 
 interface IBattleComponentState {
     user: User
-    monster: Monster
-    opponent: Monster
+    currentMutamon: Monster
+    opponentMutamon: Monster
 }
 
 
 export class BattleComponent extends React.Component<IBattleComponentProps, IBattleComponentState>{
-    constructor(props:any){
+    constructor(props: any) {
         super(props)
         this.state = {
-            user: new User(0,'',''),
-            monster: new Monster(0,0,0,'',0,false,[new Mutation(0,'',0,0,0,0)]),
-            opponent: new Monster(0,0,0,'',0,false,[new Mutation(0,'',0,0,0,0)])
+            user: new User(0, '', ''),
+            currentMutamon: new Monster(0, 0, 0, '', 0, false, [new Mutation(0, '', 0, 0, 0, 0)]),
+            opponentMutamon: new Monster(0, 0, 0, '', 0, false, [new Mutation(0, '', 0, 0, 0, 0)])
         }
     }
+
+    
 
 
 
@@ -42,10 +44,10 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             <div className="playerSide" id="playerSide">
 
                                 <p className="playerTitle" id="playerTitle">
-                                    <h1>Username{this.props.user.username}</h1>{/*   */}
-                                    <h4>Monster Name</h4> {/*{this.props.monster.name}*/}
+                                    <h1>Username{this.props.user.username}</h1>
+                                    <h4>Monster Name{this.props.currentMutamon.name}</h4>
                                 </p>
-                                
+
                                 {/* User Monster Pic */}
                                 <img id='userPic' className="userPic" alt="User Monster Pic" src={Monster1} />
 
@@ -60,16 +62,16 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>0</td> {/*{this.props.monster.strength}*/}
-                                            <td>0</td> {/*{this.props.monster.speed}*/}
-                                            <td>0</td> {/*{this.props.monster.defence}*/}
+                                            <td>{this.props.currentMutamon.strength}</td>
+                                            <td>{this.props.currentMutamon.speed}</td>
+                                            <td>{this.props.currentMutamon.defence}</td>
                                         </tr>
                                     </tbody>
                                 </Table>
 
                                 {/* Player health bar */}
                                 <div className="playerHealth" id="playerHealth">
-                                    100% 
+                                    100%
                                 </div>
                                 <Progress value="100" />
 
