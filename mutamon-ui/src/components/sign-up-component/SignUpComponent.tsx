@@ -1,16 +1,17 @@
-import React, { SyntheticEvent } from 'react'
-import { Form, FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap'
-import { Redirect, Link } from 'react-router-dom'
-import { User } from '../../models/user'
-import './login.css'
+import { User } from "../../models/user"
+import React, { SyntheticEvent } from "react"
+import { Redirect } from "react-router"
+import { Alert, Form, FormGroup, Label, Col, Input, Button } from "reactstrap"
+import { mutamonApiMakeNewUser } from "../../remote/mutamon-clients/mutamon-users"
+import { Link } from "react-router-dom"
 
-interface ILoginComponentProps {
+interface ISignUpComponentProps {
     user: User
     userLogin: (username: string, password: string) => void
     currentUserMutamon: (userId: number) => void
 }
 
-export class LoginComponent extends React.Component<ILoginComponentProps, any>{
+export class SignUpComponent extends React.Component<ISignUpComponentProps, any>{
 
     constructor(props: any) {
         super(props)
@@ -36,32 +37,43 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
         })
     }
 
-    submitLogin = async (e: SyntheticEvent) => {
+    submitSignUp = async (e: SyntheticEvent) => {
         e.preventDefault()
-        await this.props.userLogin(this.state.username, this.state.password)
-        if (this.props.user.userId) {
-            await this.props.currentUserMutamon(this.props.user.userId)
-            this.setState({
-                ...this.state,
-                userLogedIn: true
-            })
-        } else {
+        try {
+            let res = await mutamonApiMakeNewUser(this.state.username, this.state.password)
+            if (res.status === 200) {
+                await this.props.userLogin(this.state.username, this.state.password)
+                if (this.props.user.userId) {
+                    await this.props.currentUserMutamon(this.props.user.userId)
+                    this.setState({
+                        ...this.state,
+                        userLogedIn: true
+                    })
+                }
+            } else {
+                this.setState({
+                    ...this.state,
+                    invalidCredentials: true
+                })
+            }
+        } catch{
             this.setState({
                 ...this.state,
                 invalidCredentials: true
             })
         }
 
+
     }
 
     goToHome = () => {
-        return (<Redirect to='/users'/>)
+        return (<Redirect to='/users' />)
     }
 
-    wrongUserOrPass = () => {
+    userInUse = () => {
         return (
             <Alert color="danger">
-                Invalid Username or Password.
+                Username already in use.
             </Alert>
         )
     }
@@ -69,8 +81,8 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     render() {
         return (
             <div id="login-div">
-                {this.state.invalidCredentials && this.wrongUserOrPass()}
-                <Form onSubmit={this.submitLogin} className='login-form'>
+                {this.state.invalidCredentials && this.userInUse()}
+                <Form onSubmit={this.submitSignUp} className='login-form'>
                     <FormGroup row className="text-input">
                         <Label for="exampleUsername" id="" sm={2}>Username: </Label>
                         <Col sm={10}>
@@ -84,7 +96,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                             />
                         </Col>
                     </FormGroup>
-                    <br/>
+                    <br />
                     <FormGroup row className="text-input">
                         <Label for="examplePassword" sm={2}>Password: </Label>
                         <Col sm={10}>
@@ -98,10 +110,9 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                             />
                         </Col>
                     </FormGroup>
-                    <Button color="primary">Login</Button>
-                    
+                    <Button color="primary">Sign Up</Button>
                 </Form>
-                <Link to='/signup'><Button color="warning">Sign Up</Button></Link>
+                <Link to='/login'><Button>Back to Login</Button></Link>
                 {this.state.userLogedIn && this.goToHome()}
 
             </div>
