@@ -70,3 +70,24 @@ export async function mutamonApiUpdateMonster(monster: Monster){
         throw new Error('Something Went Wrong')
     }
 }
+
+export async function mutamonApiGetOpponentMonsterByLevel(level: number){
+    try{
+        const response = await mutamonClient.get('/mutamon/opponent' + level)
+        if(response.status === 200){
+            return{
+                status: response.status,
+                body: response.data,
+                header: response.headers
+            }
+        }else{
+            return {
+                status: response.status,
+                body: undefined
+            }
+        }
+    }catch(e){
+        console.log(e);
+        throw new Error('Something Went Wrong')
+    }
+}
