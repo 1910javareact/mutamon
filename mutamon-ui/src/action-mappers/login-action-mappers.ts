@@ -70,13 +70,11 @@ export const clearState = () => {
 export const updateCurrentMutamon = (monster: Monster) => async (dispatch: any) => {
     try {
         let res = await mutamonApiUpdateMonster(monster)
-        console.log(res.status);
-        
         if (res.status === 200) {
             dispatch({
                 type: userLoginTypes.MUTAMON_UPDATED,
                 payload: {
-                    currentMutamon: monster
+                    currentMutamon: res.body
                 }
             })
         } else {
