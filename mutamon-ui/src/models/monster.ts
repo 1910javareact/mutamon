@@ -6,19 +6,19 @@ export class Monster{
     level: number
     name: string
     wins: number
-    isCurrent: boolean
+    activeMonster: boolean
     speed: number
     strength: number
     defence: number
     mutations: Mutation[]
 
-    constructor(monsterId: number, userId: number, level: number, name: string, wins: number, isCurrent: boolean, mutations: Mutation[]){
+    constructor(monsterId: number, userId: number, level: number, name: string, wins: number, activeMonster: boolean, mutations: Mutation[]){
         this.monsterId = monsterId
         this.userId = userId
         this.level = level
         this.name = name
         this.wins = wins
-        this.isCurrent = isCurrent
+        this.activeMonster = activeMonster
         this.mutations = mutations
 
         this.speed = level
