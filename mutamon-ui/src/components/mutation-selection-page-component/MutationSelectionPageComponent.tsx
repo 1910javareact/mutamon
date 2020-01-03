@@ -3,8 +3,11 @@ import { Mutation } from '../../models/mutation';
 import { Monster } from '../../models/monster';
 import { Redirect } from 'react-router';
 import { mutamonApiGetMutationChoices } from '../../remote/mutamon-clients/mutamon-mutations';
+import { User } from '../../models/user';
+import { MutationComponent } from '../mutation-component/MutationComponent';
 
 interface MutationSelectionPageComponentProps {
+    user: User
     currentMutamon: Monster
     updateCurrentMutamon: (monster: Monster) => void
 }
@@ -38,7 +41,7 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
                     })
                 }
             } catch (e) {
-                
+
             }
         } else {
             this.setState({
@@ -48,15 +51,37 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
         }
     }
 
+    chooseMutation = async (mutation: Mutation) => {
+        try {
+            let mutamon = { ...this.props.currentMutamon }
+            mutamon.mutations = [...this.props.currentMutamon.mutations]
+            mutamon.mutations.push(mutation)
+            await this.props.updateCurrentMutamon(mutamon)
+            this.setState({
+                ...this.state,
+                validMutation: false
+            })
+        } catch (e) {
+
+        }
+    }
+
     render() {
 
-        return (
-            this.state.validMutation ?
-                <div>
+        let mutations = this.state.mutations.map((mutation) => {
+            return <div onClick={() => { this.chooseMutation(mutation) }}><MutationComponent key={'mutationId ' + mutation.mutationId} mutation={mutation}></MutationComponent></div>
+        })
 
-                </div>
+        return (
+            this.props.user.userId ?
+                this.state.validMutation ?
+                    <div>
+                        {mutations}
+                    </div>
+                    :
+                    <Redirect to='/test'></Redirect>
                 :
-                <Redirect to='/test'></Redirect>
+                <Redirect to='/login'></Redirect>
         )
     }
 }

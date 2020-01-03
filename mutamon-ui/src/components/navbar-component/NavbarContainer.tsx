@@ -4,7 +4,9 @@ import { connect } from "react-redux"
 import { NavbarComponent } from "./NavbarComponent"
 
 const mapStateToProps = (state: IState) => {
-    
+    return{
+        
+    }
 }
 
 const mapDispatchToProps = {
