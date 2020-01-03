@@ -1,9 +1,11 @@
 import React from 'react'
-import { NavbarComponent } from '../navbar-component/NavbarComponent'
+import  NavbarComponent  from '../navbar-component/NavbarContainer'
 import { User } from '../../models/user'
 import { Monster } from '../../models/monster'
 import { WinnersDisplayComponent } from './winners-display-component/WinnersDisplayComponent'
 import { mutamonApiGetWinningMonstersById } from '../../remote/mutamon-clients/mutamon-mutamon'
+import { Link } from 'react-router-dom'
+import { Button } from 'reactstrap'
 
 interface IHallOfFamePageComponentState{
     winners: Monster[]
@@ -25,7 +27,7 @@ export class HallOfFamePageComponent extends React.Component<IHallOfFamePageComp
     async componentDidMount(){
         
         try{
-            let winners = await mutamonApiGetWinningMonstersById(1)
+            let winners = await mutamonApiGetWinningMonstersById(this.props.user.userId)
             if(winners.status === 200){
                 
                 this.setState({
@@ -45,6 +47,7 @@ export class HallOfFamePageComponent extends React.Component<IHallOfFamePageComp
             <div>
                 <NavbarComponent/>
                 <WinnersDisplayComponent winners={this.state.winners}/>
+                <Link to='/mutate'><Button>Mutate</Button></Link>
             </div>
         )
     }

@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import  HallOfFamePageComponent  from './components/hall-of-fame-page-component/HallOfFamePageContainer';
 import { store } from './store';
 import  UserPageComponet  from './components/user-page-component/UserPageContainer';
+import  LoginComponent  from './components/login-component/LoginContainer';
+import  MutationSelectionPageComponent  from './components/mutation-selection-page-component/MutationSelectionPageContainer';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,9 @@ const App: React.FC = () => {
             <Route path='/hof' component={HallOfFamePageComponent}></Route>
             <Route path='/' component={HallOfFamePageComponent}></Route>
             
+            <Route path='/login' component={LoginComponent}></Route>
+            <Route path='/mutate' component={MutationSelectionPageComponent}></Route>
+            <Route path='/' component={LoginComponent}></Route>
           </Switch>
         </Router>
       </Provider>
