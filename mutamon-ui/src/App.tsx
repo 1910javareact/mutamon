@@ -20,8 +20,6 @@ const App: React.FC = () => {
             <Route path='/battle' component={BattleComponent}></Route>
             <Route path='/test' component={HallOfFamePageComponent}></Route>
             <Route path='/hof' component={HallOfFamePageComponent}></Route>
-            <Route path='/' component={HallOfFamePageComponent}></Route>
-            
             <Route path='/login' component={LoginComponent}></Route>
             <Route path='/mutate' component={MutationSelectionPageComponent}></Route>
             <Route path='/' component={LoginComponent}></Route>
