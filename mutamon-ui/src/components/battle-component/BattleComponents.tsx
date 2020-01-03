@@ -34,7 +34,6 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             if (res.status === 200) {
                 let om = res.body;
                 om.strength -= 1;
-                om.defence -= 1;
                 om.speed -= 1;
                 this.setState({
                     ...this.state,
