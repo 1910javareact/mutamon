@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { User } from '../../models/user'
 import './login.css'
 
@@ -80,7 +80,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     }
 
     goToHome = () => {
-        return (<Redirect to='/test'/>)
+        return (<Redirect to='/users'/>)
     }
 
     wrongUserOrPass = () => {
@@ -134,6 +134,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                             />
                         </Col>
                     </FormGroup>
+<<<<<<< HEAD
                                     <Button
                             type="submit"
                             fullWidth
@@ -142,7 +143,12 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                         >
                             Sign In
                         </Button>
+=======
+                    <Button color="primary">Login</Button>
+                    
+>>>>>>> 6abd4e2b2d030a4223a4b7d55a56a08111cbf952
                 </Form>
+                <Link to='/signup'><Button color="warning">Sign Up</Button></Link>
                 {this.state.userLogedIn && this.goToHome()}
                 <Box mt={8}>
                     <Copyright />
