@@ -1,29 +1,9 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link , } from 'react-router-dom'
 import { User } from '../../models/user'
 import './login.css'
 
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-
-
-
-
-
-function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Mutamon
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
 
 
   
@@ -99,12 +79,9 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                 
             <div id="login-div">
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
-
-                        <Typography component="h1" variant="h5">
-                       Mutamon Sign In Page
-                        </Typography>
+                <h1>Mutamon Home Page</h1>
+                
                         <br/>
-
                 <Form onSubmit={this.submitLogin} className='login-form'>
                     <FormGroup row className="text-input">
                         <Label for="exampleUsername" id="" sm={2}>Username: </Label>
@@ -134,25 +111,14 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                             />
                         </Col>
                     </FormGroup>
-<<<<<<< HEAD
-                                    <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                        >
-                            Sign In
-                        </Button>
-=======
-                    <Button color="primary">Login</Button>
+
+                    <Button color="success" size="lg">Login</Button>
+
                     
->>>>>>> 6abd4e2b2d030a4223a4b7d55a56a08111cbf952
                 </Form>
                 <Link to='/signup'><Button color="warning">Sign Up</Button></Link>
                 {this.state.userLogedIn && this.goToHome()}
-                <Box mt={8}>
-                    <Copyright />
-                </Box>
+
 
             </div>
         )
