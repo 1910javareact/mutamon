@@ -39,7 +39,7 @@ render(){
 
                 <Row>
                 <Col>
-                <img id='profilepic' src={Monsterpic} alt='Monster'/>
+                <img id='profilepic' src={Monsterpic} alt="Monster Pic" />
       
             <Table bordered color='blue'>
 
