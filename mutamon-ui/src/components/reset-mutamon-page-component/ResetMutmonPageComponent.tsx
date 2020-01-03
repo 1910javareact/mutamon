@@ -32,47 +32,56 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
     }
 
     goToHome = () => {
-        return (<Redirect to='/users'/>)
+        return (<Redirect to='/users' />)
     }
 
     resetMonster = async (e: SyntheticEvent) => {
         e.preventDefault()
-        let oldMon = { ...this.props.currentMutamon }
-        oldMon.isCurrent = false
-        await this.props.updateCurrentMutamon(oldMon)
-        await this.props.updateCurrentMutamon(new Monster(0, this.props.currentMutamon.userId, 1, this.state.name, 0, true, []))
-        this.setState({
-            ...this.state,
-            mutamonUpdated: true
-        })
+        if (this.props.currentMutamon.monsterId) {
+            let oldMon = { ...this.props.currentMutamon }
+            oldMon.activeMonster = false
+            await this.props.updateCurrentMutamon(oldMon)
+            await this.props.updateCurrentMutamon(new Monster(0, this.props.currentMutamon.userId, 1, this.state.name, 0, true, []))
+            this.setState({
+                ...this.state,
+                mutamonUpdated: true
+            })
+        } else {
+            await this.props.updateCurrentMutamon(new Monster(0, this.props.user.userId, 1, this.state.name, 0, true, []))
+            this.setState({
+                ...this.state,
+                mutamonUpdated: true
+            })
+        }
+
     }
 
     render() {
         return (
-            this.props.user.userId?
-            <div>
-                <Form onSubmit={this.resetMonster}>
-                    <FormGroup row className="text-input">
-                        <Label for="exampleName" id="" sm={2}>Name: </Label>
-                        <Col sm={10}>
-                            <Input
-                                type="text"
-                                name="name"
-                                id="exampleName"
-                                placeholder="Name"
-                                value={this.state.name}
-                                onChange={this.updateName}
-                            />
-                        </Col>
-                    </FormGroup>
-                    <Button>
-                        Reset
-                    </Button>
-                </Form>
-                {this.state.mutamonUpdated && this.goToHome()}
-            </div>
-            :
-            <Redirect to='/login'></Redirect>
+            this.props.user.userId ?
+                <div>
+                    <Form onSubmit={this.resetMonster}>
+                        <FormGroup row className="text-input">
+                            <Label for="exampleName" id="" sm={2}>Name: </Label>
+                            <Col sm={10}>
+                                <Input
+                                    type="text"
+                                    name="name"
+                                    id="exampleName"
+                                    placeholder="Name"
+                                    value={this.state.name}
+                                    onChange={this.updateName}
+                                />
+                            </Col>
+                        </FormGroup>
+                        <Button>
+                            New Mutamon!
+                        </Button>
+                    </Form>
+                    {this.state.mutamonUpdated && this.goToHome()}
+                </div>
+                :
+                <Redirect to='/login'></Redirect>
         )
     }
 }

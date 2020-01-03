@@ -6,7 +6,8 @@ import { IState } from "../../reducers"
 
 const mapStateToProps = (state: IState) => {
     return {
-      currentMutamon: state.login.currentMutamon
+      currentMutamon: state.login.currentMutamon,
+      user: state.login.user
     }
 }
 
