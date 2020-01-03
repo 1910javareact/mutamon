@@ -50,9 +50,11 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
 
     fighting = async () => {
+      
         let userHealth = this.state.currentMutamon.defence * 150;
         let npcHealth = this.state.opponentMutamon.defence * 150;
-
+        let userHpBar = userHealth/this.state.currentMutamon.defence * 150;
+        let npcHpBar = npcHealth/this.state.opponentMutamon.defence * 150;
         let userDmg = this.state.currentMutamon.strength * 11;
         let npcDmg = this.state.opponentMutamon.strength * 11;
 
@@ -277,7 +279,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                 <div className="playerHealth" id="playerHealth">
                                     100%
                                 </div>
-                                <Progress value="100" />
+                                <Progress value="100"/>
 
                                 {/* Run away button */}
                                 <br />
@@ -334,7 +336,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                 <div className="oppenentHealth" id="opponentHealth">
                                     100%
                                 </div>
-                                <Progress value="100" />
+                                <Progress value={"100"} />
                             </div>
                         </Col>
 
