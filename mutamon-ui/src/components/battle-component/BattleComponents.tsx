@@ -32,6 +32,10 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         try {
             let res = await mutamonApiGetOpponentMonsterByLevel(this.props.currentMutamon.level)
             if (res.status === 200) {
+                let om = res.body;
+                om.strength -= 1;
+                om.defence -= 1;
+                om.speed -= 1;
                 this.setState({
                     ...this.state,
                     currentMutamon: this.props.currentMutamon,
@@ -117,7 +121,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                                 <p className="opponentTitle" id="opponentTitle">
                                     <h1>Opponent</h1>
-                                    <h4>{this.state.opponentMutamon}</h4>
+                                    <h4>{this.state.opponentMutamon.name}</h4>
                                 </p>
 
                                 {/* Opponent Monster Pic */}
