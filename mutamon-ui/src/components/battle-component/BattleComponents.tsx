@@ -6,15 +6,14 @@ import { Monster } from '../../models/monster'
 import { Mutation } from '../../models/mutation'
 import Monster1 from '../../assests/monster1.jpg'
 import Monster2 from '../../assests/monster2.jpg'
+import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 
 interface IBattleComponentProps {
     user: User
     currentMutamon: Monster
-    opponentMutamon: Monster
 }
 
 interface IBattleComponentState {
-    user: User
     currentMutamon: Monster
     opponentMutamon: Monster
 }
@@ -24,13 +23,30 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
     constructor(props: any) {
         super(props)
         this.state = {
-            user: new User(0, '', ''),
             currentMutamon: new Monster(0, 0, 0, '', 0, false, [new Mutation(0, '', 0, 0, 0, 0)]),
             opponentMutamon: new Monster(0, 0, 0, '', 0, false, [new Mutation(0, '', 0, 0, 0, 0)])
         }
     }
 
-    
+    async componentDidMount() {
+        try {
+            let res = await mutamonApiGetOpponentMonsterByLevel(this.props.currentMutamon.level)
+            if (res.status === 200) {
+                this.setState({
+                    ...this.state,
+                    currentMutamon: this.props.currentMutamon,
+                    opponentMutamon: res.body
+                })
+            } else {
+                this.setState({
+                    ...this.state,
+                    currentMutamon: this.props.currentMutamon
+                })
+            }
+        } catch {
+
+        }
+    }
 
 
 
@@ -101,7 +117,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                                 <p className="opponentTitle" id="opponentTitle">
                                     <h1>Opponent</h1>
-                                    <h4>Monster Name</h4> {/*{this.props.opponent.name}*/}
+                                    <h4>{this.state.opponentMutamon}</h4>
                                 </p>
 
                                 {/* Opponent Monster Pic */}
@@ -118,9 +134,9 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>0</td>{/*{this.props.opponent.strength}*/}
-                                            <td>0</td> {/*{this.props.opponent.speed}*/}
-                                            <td>0</td> {/*{this.props.opponent.defence}*/}
+                                            <td>{this.state.opponentMutamon.strength}</td>{/*{this.props.opponent.strength}*/}
+                                            <td>{this.state.opponentMutamon.speed}</td> {/*{this.props.opponent.speed}*/}
+                                            <td>{this.state.opponentMutamon.defence}</td> {/*{this.props.opponent.defence}*/}
                                         </tr>
                                     </tbody>
                                 </Table>
