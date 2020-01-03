@@ -11,5 +11,25 @@
     width:200px;
     border-radius: 50%;
     margin: 5%;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.battlePage{
+    margin: 15px;
+  background-color: black;
 }
 
