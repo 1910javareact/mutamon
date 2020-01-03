@@ -9,6 +9,8 @@ const initialState: ILoginState = {
     
 }
 
+
+
 export const loginReducer = (state = initialState, action:any)=>{
     switch(action.type){
         case userLoginTypes.SUCCESSFUL_LOGIN:{
