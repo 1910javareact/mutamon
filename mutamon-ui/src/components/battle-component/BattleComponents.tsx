@@ -88,6 +88,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             npcAttackSpeed = 2;
         }
 
+        function sleep(miliseconds: number) {
+            var currentTime = new Date().getTime();
+         
+            while (currentTime + miliseconds >= new Date().getTime()) {
+            }
+         }
+
         while (userHealth > 0 && npcHealth > 0) {
 
             if (userAttackSpeed > npcAttackSpeed) {
@@ -226,7 +233,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
 
 
-
+            sleep(5000);
     }
 
 
