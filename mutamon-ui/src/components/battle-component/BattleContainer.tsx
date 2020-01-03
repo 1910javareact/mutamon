@@ -6,7 +6,8 @@ import { BattleComponent } from "./BattleComponents";
 
 const mapStateToProps = (state: IState, ownProps: any) =>{
     return{
-        
+        user: state.login.user,
+        monster: state.login.currentMutamon
     }
 }
 
