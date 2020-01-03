@@ -48,12 +48,12 @@ export async function mutamonApiGetCurrentMonsterById(userId: number){
 export async function mutamonApiUpdateMonster(monster: Monster){
     
     const body = {
-        monster
+        ...monster
     }
 
-    try{
+    try{        
         const response = await mutamonClient.patch('/mutamon',body)
-        if(response.status === 201){
+        if(response.status === 200){
             return{
                 status: response.status,
                 body: response.data,

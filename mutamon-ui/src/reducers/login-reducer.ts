@@ -42,6 +42,7 @@ export const loginReducer = (state = initialState, action:any)=>{
             }
         }
         default:
+            console.log("default");
             return state
     }
 }
