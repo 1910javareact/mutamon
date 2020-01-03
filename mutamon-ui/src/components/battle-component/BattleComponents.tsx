@@ -33,6 +33,11 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
     
 
 
+    fighting = async() =>{
+        let userHealth = 
+    }
+
+
 
     render() {
         return (
