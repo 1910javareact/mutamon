@@ -6,6 +6,7 @@ import { Monster } from "../../models/monster";
 import { Mutation } from "../../models/mutation";
 import { Button, Table, Container, Row, Col, Progress } from "reactstrap";
 import "./UserPageComponent.css"
+import { Link } from "react-router-dom";
 
 interface IUserPageComponentProps{
     monster: Monster
@@ -67,9 +68,11 @@ render(){
                 </Table>
                 </Col>
                 <Col>
+                    <Link to = {"/battle"}>
                     <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" >
                     Next Fight
                     </Button>
+                    </Link>
                     <Button className="Restartbutton" id="Restartbutton" variant="Next Fight" size="lg" >
                     Restart
                     </Button>
@@ -79,7 +82,7 @@ render(){
 
                     <Row>
                         <Col>
-                    
+                            <p>XP</p>
                             <Progress id="xpbar" value="60" >60%</Progress>
                          </Col>
                 </Row>
