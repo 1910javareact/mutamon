@@ -32,7 +32,7 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
     }
 
     goToHome = () => {
-        return (<Redirect to='/users' />)
+        return (<Redirect to='/mutate' />)
     }
 
     resetMonster = async (e: SyntheticEvent) => {

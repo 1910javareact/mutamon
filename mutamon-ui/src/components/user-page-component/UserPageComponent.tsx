@@ -3,10 +3,11 @@ import React from "react";
 import Monsterpic from "../../assets/sanic.png"
 import NavbarComponent from "../navbar-component/NavbarContainer";
 import { Monster } from "../../models/monster";
-import { Button, Table, Container, Row, Col, Progress } from "reactstrap";
+import { Button, Container, Row, Col, Progress } from "reactstrap";
 import "./UserPageComponent.css"
 import { Link, Redirect } from "react-router-dom";
 import { User } from "../../models/user";
+import { MonsterComponent } from "../monster-component/MonsterComponent";
 
 interface IUserPageComponentProps {
     currentMutamon: Monster
@@ -24,23 +25,7 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
                         <Row>
                             <Col>
                                 <img id='profilepic' src={Monsterpic} alt='Monster' />
-                                <Table bordered color='blue'>
-                                    <tr>
-                                        <td>{this.props.currentMutamon.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>speed: {this.props.currentMutamon.speed}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>strength: {this.props.currentMutamon.strength}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Defence: {this.props.currentMutamon.defence}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>wins: {this.props.currentMutamon.wins}</td>
-                                    </tr>
-                                </Table>
+                                <MonsterComponent monster={this.props.currentMutamon}></MonsterComponent>
                             </Col>
                             <Col>
                                 <Link to="/battle">
