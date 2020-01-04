@@ -15,6 +15,7 @@ interface MutationSelectionPageComponentProps {
 interface MutationSelectionPageComponentState {
     mutations: Mutation[],
     validMutation: boolean,
+    realUpdate: boolean
 }
 
 export class MutationSelectionPageComponent extends React.Component<MutationSelectionPageComponentProps, MutationSelectionPageComponentState>{
@@ -23,7 +24,8 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
         super(props)
         this.state = {
             mutations: [],
-            validMutation: true
+            validMutation: true,
+            realUpdate: false
         }
     }
 
@@ -38,7 +40,17 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
                 })
             }
         } catch (e) {
+            try{
+                let res = await mutamonApiGetMutationChoices(this.props.currentMutamon.level + 1)
+                if (res.status === 200) {
+                    this.setState({
+                        ...this.state,
+                        mutations: res.body
+                    })
+                }
+            } catch (e) {
 
+            }
         }
     }
 
