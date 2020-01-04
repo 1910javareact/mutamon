@@ -75,8 +75,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let userHealth = this.state.userHealthState;
         let npcHealth = this.state.npcHealthState;
 
-        let userDmg = this.state.currentMutamon.strength * 11;
-        let npcDmg = this.state.opponentMutamon.strength * 11;
+        let userDmg = this.state.currentMutamon.strength * 14;
+        let npcDmg = this.state.opponentMutamon.strength * 14;
 
         let userCrit = this.state.currentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
         let npcCrit = this.state.opponentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
@@ -660,13 +660,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* Fight */}
                             <br />
-                            <Button onClick={this.fight} color="danger" className="btnAtk" id="btnAtk">
+                            <Button onClick={this.fight} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>Attack</h4>
                             </Button>{' '}
 
                             {/* Auto Fight */}
                             <br />
-                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk">
+                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>AutoAttack</h4>
                             </Button>{' '}
                         </div>
