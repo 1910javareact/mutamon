@@ -1,11 +1,21 @@
 import React, { SyntheticEvent } from 'react'
-import { Form, FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap'
+import { Form, FormGroup, Label, Input, Button, Col, Alert, Container, Row } from 'reactstrap'
 import { Redirect, Link , } from 'react-router-dom'
 import { User } from '../../models/user'
 import './login.css'
+import Monsterpic from "../../assests/MutamonHomePage.png"
+import { Typography,Box } from '@material-ui/core'
 
 
-  
+function Copyright() {
+    return (
+        <Typography variant='body2' color='textPrimary' align='center'>
+            {"Copyright © Mutamon "}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    )
+}
 
 interface ILoginComponentProps {
     user: User
@@ -75,15 +85,20 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
 
     render() {
         return (
+            
             <div id="login-div">
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
-                <h1><span className = "font-weight-bold">Mutamon Home Page</span></h1>   
-                        <br/>
-                        <br/>
-                <Form onSubmit={this.submitLogin} className='login-form'>
+                <img id='homePageLogo' src={Monsterpic} alt='Monster' />
+                        
+                        <Container>
+                            <Row>
+                                <Col></Col>
+                        <Col>
+                <Form onSubmit={this.submitLogin} id ="loginForm"className='loginForm'>
                     <FormGroup row className="text-input">
-                        <Label for="exampleUsername" id="" lg={2}>Username: </Label>
-                        <Col lg={5}>
+                        <Label for="exampleUsername" id="" lg={12}style={{fontWeight: "bold"}}>Username: </Label>
+                        <Row></Row>
+                        <Container className="themed-container">                     
                             <Input
                                 type="text"
                                 name="Username"
@@ -92,12 +107,14 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                                 value={this.state.username}
                                 onChange={this.updateUsername}
                             />
-                        </Col>
+           
+                        </Container>
+
+
                     </FormGroup>
-                    <br/>
                     <FormGroup row className="text-input">
-                        <Label for="examplePassword" sm={2}>Password: </Label>
-                        <Col sm={5}>
+                        <Label for="examplePassword" sm={12}style={{fontWeight: "bold"}}>Password: </Label>
+                        <Container className="themed-container">
                             <Input
                                 type="password"
                                 required
@@ -107,18 +124,28 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                                 value={this.state.password}
                                 onChange={this.updatePassword}
                             />
-                        </Col>
+                        </Container>
+
+
                     </FormGroup>
 
-                    <Button color="success" size="lg">Login</Button>
-
+                    <Button color="primary" size="lg" block>Login</Button>
                     
                 </Form>
-                <Link to='/signup'><Button color="warning">Sign Up</Button></Link>
+                
+                <Link to='/signup'><Button color="warning" block>Sign Up</Button></Link>                                <Row></Row>
+                <Row></Row>
+
                 {this.state.userLogedIn && this.goToHome()}
-
-
+                </Col>
+                <Col></Col>
+                        </Row>
+                        <Box mt={8}>
+                    <Copyright />
+                </Box>
+                    </Container>
             </div>
+
         )
     }      
 }
