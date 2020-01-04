@@ -3,7 +3,7 @@ import React from "react";
 import Monsterpic from "../../assets/sanic.png"
 import NavbarComponent from "../navbar-component/NavbarContainer";
 import { Monster } from "../../models/monster";
-import { Button, Container, Row, Col, Progress } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 import "./UserPageComponent.css"
 import { Link, Redirect } from "react-router-dom";
 import { User } from "../../models/user";
@@ -39,13 +39,6 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
                                     </Button>
                                 </Link>
 
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col>
-                                <p>XP</p>
-                                <Progress id="xpbar" value="100" >0</Progress>
                             </Col>
                         </Row>
                     </Container>
