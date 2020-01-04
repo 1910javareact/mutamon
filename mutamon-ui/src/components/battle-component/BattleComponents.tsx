@@ -8,7 +8,6 @@ import Monster1 from '../../assests/monster1.jpg'
 import Monster2 from '../../assests/monster2.jpg'
 import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom'
 
 interface IBattleComponentProps {
     user: User
@@ -75,8 +74,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let userHealth = this.state.userHealthState;
         let npcHealth = this.state.npcHealthState;
 
-        let userDmg = this.state.currentMutamon.strength * 11;
-        let npcDmg = this.state.opponentMutamon.strength * 11;
+        let userDmg = this.state.currentMutamon.strength * 14;
+        let npcDmg = this.state.opponentMutamon.strength * 14;
 
         let userCrit = this.state.currentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
         let npcCrit = this.state.opponentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
@@ -509,6 +508,24 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
+    escape =() => {
+
+        let eChance = 0.25; //chance to escape
+        let e = Math.random();
+        if(e > eChance){
+            return this.fight(); //escape failed, fight another round and you can escape again
+        }else{
+
+            this.setState({
+                ...this.state,
+                realUpdate: true
+            })
+            return this.fightOver()  //run chicken run
+        
+        }
+
+    }
+
     finishFight = () => {
         if (this.state.npcHealthState <= 0) {
             let newMon = { ...this.state.currentMutamon }
@@ -544,6 +561,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     battleLog: 'Oh No! You Lost!',
                     realUpdate: false
                 })
+            } else {
+                this.setState({
+                    ...this.state,
+                    battleLog: 'You got away safely.',
+                    realUpdate: false,
+                    fightOver: true
+                })
             }
         }
 
@@ -552,7 +576,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 <div>
                     <Button color='danger' onClick={()=>this.setState({...this.state, battleLog: ''})}>
                         Get me outta here!
-                </Button>
+                    </Button>
                 </div>
             )
         } else {
@@ -605,13 +629,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             </div>
                             <Progress value={this.state.userHealthState / (this.state.currentMutamon.defence * 100) * 100} />
 
-                            {/* Quit button */}
+                            {/* escape button */}
                             <br />
-                            <Link to='/reset'>
-                                <Button color="danger" className="btnRun" id="btnRun">
-                                    <h4>Quit</h4>
+                            
+                                <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
+                                    <h4>escape</h4>
                                 </Button>{' '}
-                            </Link>
+                            
                         </div>
 
                         <div className="column" id="printoutColumn">
@@ -660,13 +684,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* Fight */}
                             <br />
-                            <Button onClick={this.fight} color="danger" className="btnAtk" id="btnAtk">
+                            <Button onClick={this.fight} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>Attack</h4>
                             </Button>{' '}
 
                             {/* Auto Fight */}
                             <br />
-                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk">
+                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>AutoAttack</h4>
                             </Button>{' '}
                         </div>
