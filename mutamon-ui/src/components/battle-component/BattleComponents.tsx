@@ -8,7 +8,6 @@ import Monster1 from '../../assests/monster1.jpg'
 import Monster2 from '../../assests/monster2.jpg'
 import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom'
 
 interface IBattleComponentProps {
     user: User
@@ -67,28 +66,6 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         } catch {
 
         }
-    }
-
-    escape =() => {
-
-        let echance = 0; //chance to escape
-
-        if(this.state.currentMutamon.speed > this.state.opponentMutamon.speed){
-            echance = 0.5;
-        }else{
-            echance = 0.2
-        }
-
-        let e = Math.random();
-
-        if(e > echance){
-
-            return this.fight; //escape failed, fight another round and you can escape again
-
-        }else{
-            return <Redirect to='/users'></Redirect>  //run chicken run
-        }
-
     }
 
     fight = () => {
@@ -531,6 +508,24 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
+    escape =() => {
+
+        let eChance = 0.25; //chance to escape
+        let e = Math.random();
+        if(e > eChance){
+            return this.fight(); //escape failed, fight another round and you can escape again
+        }else{
+
+            this.setState({
+                ...this.state,
+                realUpdate: true
+            })
+            return this.fightOver()  //run chicken run
+        
+        }
+
+    }
+
     finishFight = () => {
         if (this.state.npcHealthState <= 0) {
             let newMon = { ...this.state.currentMutamon }
@@ -566,6 +561,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     battleLog: 'Oh No! You Lost!',
                     realUpdate: false
                 })
+            } else {
+                this.setState({
+                    ...this.state,
+                    battleLog: 'You got away safely.',
+                    realUpdate: false,
+                    fightOver: true
+                })
             }
         }
 
@@ -574,7 +576,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 <div>
                     <Button color='danger' onClick={()=>this.setState({...this.state, battleLog: ''})}>
                         Get me outta here!
-                </Button>
+                    </Button>
                 </div>
             )
         } else {
@@ -630,7 +632,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             {/* escape button */}
                             <br />
                             
-                                <Button onClick={this.fight} color="danger" className="btnRun" id="btnRun">
+                                <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
                                     <h4>escape</h4>
                                 </Button>{' '}
                             
