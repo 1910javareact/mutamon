@@ -1,8 +1,8 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Monster } from "../../models/monster";
 import { Mutation } from "../../models/mutation";
 
-interface IFightingComponentPorps{
+interface IFightingComponentProps{
     userMonster: Monster,
     npcMonster: Monster
 }
@@ -21,15 +21,19 @@ export class FightingComponent extends React.Component<any,any>{
         }
     }
 
-    //fighting logic
+    fighting = async () => {
+        let userHealth = this.props.user
 
     
+    
+    
+    }    
 
 
 
     render(){
         return(
-            
+
         <p>battle starts</p>
         )
     }

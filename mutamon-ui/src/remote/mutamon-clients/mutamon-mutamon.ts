@@ -46,6 +46,7 @@ export async function mutamonApiGetCurrentMonsterById(userId: number){
 }
 
 export async function mutamonApiUpdateMonster(monster: Monster){
+    console.log(monster);
     
     const body = {
         ...monster

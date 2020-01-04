@@ -9,6 +9,7 @@ import  UserPageComponet  from './components/user-page-component/UserPageContain
 import  LoginComponent  from './components/login-component/LoginContainer';
 import  MutationSelectionPageComponent  from './components/mutation-selection-page-component/MutationSelectionPageContainer';
 import  SignUpComponent  from './components/sign-up-component/SignUpContainer';
+import  ResetMutamonPageComponent  from './components/reset-mutamon-page-component/ResetMutamonPageContainer';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path='/login' component={LoginComponent}></Route>
             <Route path='/signup' component={SignUpComponent}></Route>
             <Route path='/mutate' component={MutationSelectionPageComponent}></Route>
+            <Route path='/reset' component={ResetMutamonPageComponent}></Route>
             <Route path='/' component={LoginComponent}></Route>
           </Switch>
         </Router>
