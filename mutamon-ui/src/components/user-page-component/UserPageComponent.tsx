@@ -19,7 +19,7 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
 
     render() {
         return (
-            // this.props.user.userId ?
+            this.props.user.userId ?
             <div>
                 <NavbarComponent />
 
@@ -52,8 +52,8 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
 
 
             </div>
-            // :
-            // <Redirect to='/login'></Redirect>
+            :
+            <Redirect to='/login'></Redirect>
         )
     }
 }
