@@ -28,26 +28,17 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
     }
 
     async componentDidMount() {
-        //if the current mutamon is at a valid mutation state
-        if ((this.props.currentMutamon.level === 1 || this.props.currentMutamon.level === 3 || this.props.currentMutamon.level === 5 || this.props.currentMutamon.level === 7) &&
-            this.props.currentMutamon.mutations.length < (this.props.currentMutamon.level + 1) / 2) {
-            try {
-                let res = await mutamonApiGetMutationChoices(this.props.currentMutamon.level)
+        try {
+            let res = await mutamonApiGetMutationChoices(this.props.currentMutamon.level)
 
-                if (res.status === 200) {
-                    this.setState({
-                        ...this.state,
-                        mutations: res.body
-                    })
-                }
-            } catch (e) {
-
+            if (res.status === 200) {
+                this.setState({
+                    ...this.state,
+                    mutations: res.body
+                })
             }
-        } else {
-            this.setState({
-                ...this.state,
-                validMutation: false
-            })
+        } catch (e) {
+
         }
     }
 
@@ -79,7 +70,7 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
                         {mutations}
                     </div>
                     :
-                    <Redirect to='/test'></Redirect>
+                    <Redirect to='/users'></Redirect>
                 :
                 <Redirect to='/login'></Redirect>
         )
