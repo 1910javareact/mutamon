@@ -56,8 +56,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
       
         let userHealth = this.state.currentMutamon.defence * 150;
         let npcHealth = this.state.opponentMutamon.defence * 150;
-        let userHpBar = userHealth/this.state.currentMutamon.defence * 150;
-        let npcHpBar = npcHealth/this.state.opponentMutamon.defence * 150;
+        // let userHpBar = userHealth/this.state.currentMutamon.defence * 150;
+        // let npcHpBar = npcHealth/this.state.opponentMutamon.defence * 150;
         let userDmg = this.state.currentMutamon.strength * 11;
         let npcDmg = this.state.opponentMutamon.strength * 11;
 
@@ -70,12 +70,12 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let userDodge = this.state.currentMutamon.speed / (this.state.currentMutamon.speed+this.state.opponentMutamon.speed);
         let npcDodge = 1-userDodge;
 
-        let escape;
-        if (this.state.currentMutamon.speed > this.state.opponentMutamon.speed) {
-            escape = 0.5;
-        } else {
-            escape = 0.2;
-        }
+        // let escape;
+        // if (this.state.currentMutamon.speed > this.state.opponentMutamon.speed) {
+        //     escape = 0.5;
+        // } else {
+        //     escape = 0.2;
+        // }
 
         let userCritStrike = userDmg * 1.5;
         let npcCritStrike = npcDmg * 1.5;
@@ -85,7 +85,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         if (this.state.currentMutamon.speed > this.state.opponentMutamon.speed) {
             userAttackSpeed = 2;
             npcAttackSpeed = 1;
-        } else if (this.state.currentMutamon.speed == this.state.opponentMutamon.speed) {
+        } else if (this.state.currentMutamon.speed === this.state.opponentMutamon.speed) {
             userAttackSpeed = 1;
             npcAttackSpeed = 1;
         } else {
@@ -151,7 +151,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                         break;
                     }
                     userHealth = userHealth - npcDmg * userArmour*d3*(1-c3) - npcCritStrike * userArmour*d3*c3
-                } else if(userAttackSpeed == npcAttackSpeed) {
+                } else if(userAttackSpeed === npcAttackSpeed) {
                     let c1 = Math.random();  //crit chance
                     let c2 = Math.random();
                     let d1 = Math.random();  //dodge chance
