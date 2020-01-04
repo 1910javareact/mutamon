@@ -69,6 +69,28 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
+    escape =() => {
+
+        let echance = 0; //chance to escape
+
+        if(this.state.currentMutamon.speed > this.state.opponentMutamon.speed){
+            echance = 0.5;
+        }else{
+            echance = 0.2
+        }
+
+        let e = Math.random();
+
+        if(e > echance){
+
+            return this.fight; //escape failed, fight another round and you can escape again
+
+        }else{
+            return <Redirect to='/users'></Redirect>  //run chicken run
+        }
+
+    }
+
     fight = () => {
         let battleLog = ''
 
@@ -605,13 +627,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             </div>
                             <Progress value={this.state.userHealthState / (this.state.currentMutamon.defence * 100) * 100} />
 
-                            {/* Quit button */}
+                            {/* escape button */}
                             <br />
-                            <Link to='/reset'>
-                                <Button color="danger" className="btnRun" id="btnRun">
-                                    <h4>Quit</h4>
+                            
+                                <Button onClick={this.fight} color="danger" className="btnRun" id="btnRun">
+                                    <h4>escape</h4>
                                 </Button>{' '}
-                            </Link>
+                            
                         </div>
 
                         <div className="column" id="printoutColumn">
