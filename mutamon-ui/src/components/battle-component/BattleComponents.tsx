@@ -256,7 +256,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                         </div>
 
                         {/* User Monster Pic */}
-                        <img id='userPic' className="userPic" alt="User Monster Pic" src={Monster1} />
+                        <img id='userPic' className="pic" alt="User Monster Pic" src={Monster1} />
 
                         {/* Players Current stats */}
                         <Table borderless className="playerStats" id="playerStats">
@@ -305,7 +305,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                         </div>
 
                         {/* Opponent Monster Pic */}
-                        <img id='opponentPic' className="opponentPic" alt="Opponent Monster Pic" src={Monster2} />
+                        <img id='opponentPic' className="pic" alt="Opponent Monster Pic" src={Monster2} />
 
                         {/* Opponents stats */}
                         <Table borderless className="opponentStats" id="opponentStats">
