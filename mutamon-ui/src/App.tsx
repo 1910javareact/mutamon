@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import  BattleComponent  from './components/battle-component/BattleContainer';
+
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import  HallOfFamePageComponent  from './components/hall-of-fame-page-component/HallOfFamePageContainer';
+import { store } from './store';
+import  UserPageComponet  from './components/user-page-component/UserPageContainer';
+import  LoginComponent  from './components/login-component/LoginContainer';
+import  MutationSelectionPageComponent  from './components/mutation-selection-page-component/MutationSelectionPageContainer';
+import  SignUpComponent  from './components/sign-up-component/SignUpContainer';
+import  ResetMutamonPageComponent  from './components/reset-mutamon-page-component/ResetMutamonPageContainer';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>Mutamon</code> and save to reload. new text. even newer test
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path='/users' component={UserPageComponet}></Route>
+            <Route path='/battle' component={BattleComponent}></Route>
+            <Route path='/test' component={HallOfFamePageComponent}></Route>
+            <Route path='/hof' component={HallOfFamePageComponent}></Route>
+            <Route path='/login' component={LoginComponent}></Route>
+            <Route path='/signup' component={SignUpComponent}></Route>
+            <Route path='/mutate' component={MutationSelectionPageComponent}></Route>
+            <Route path='/reset' component={ResetMutamonPageComponent}></Route>
+            <Route path='/' component={LoginComponent}></Route>
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }

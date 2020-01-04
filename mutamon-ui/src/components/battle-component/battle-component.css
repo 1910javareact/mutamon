@@ -1,0 +1,45 @@
+#battlePage {
+    margin-top: flex-box;
+    margin: 15px;
+}
+
+#btnRun{
+    font-size: 160pt;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pic{
+    height:200px;
+    width:200px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    padding-left: 20px;
+}
+
+.battlePage{
+    margin: 15px;
+    /* background-color: black; */
+}
+
+.progress-bar{
+    display: block;
+}
+
