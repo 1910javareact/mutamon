@@ -5,7 +5,6 @@ import { User } from '../../models/user'
 import './login.css'
 
 
-
   
 
 interface ILoginComponentProps {
@@ -76,16 +75,15 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
 
     render() {
         return (
-                
             <div id="login-div">
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
-                <h1>Mutamon Home Page</h1>
-                
+                <h1><span className = "font-weight-bold">Mutamon Home Page</span></h1>   
+                        <br/>
                         <br/>
                 <Form onSubmit={this.submitLogin} className='login-form'>
                     <FormGroup row className="text-input">
-                        <Label for="exampleUsername" id="" sm={2}>Username: </Label>
-                        <Col sm={5}>
+                        <Label for="exampleUsername" id="" lg={2}>Username: </Label>
+                        <Col lg={5}>
                             <Input
                                 type="text"
                                 name="Username"
