@@ -20,6 +20,7 @@ export class MonsterComponent extends React.PureComponent<IMonsterComponentProps
                     <Card className="text-left card-element">
                         <CardBody>
                             <CardText>Name: {this.props.monster.name}</CardText>
+                            <CardText>Level: {this.props.monster.level}</CardText>
                             <CardText>Speed: {this.props.monster.speed}</CardText>
                             <CardText>Strength: {this.props.monster.strength}</CardText>
                             <CardText>Defence: {this.props.monster.defence}</CardText>

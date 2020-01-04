@@ -1,8 +1,7 @@
 import { IState } from "../../reducers";
 import { connect } from "react-redux";
 import { BattleComponent } from "./BattleComponents";
-
-
+import { updateCurrentMutamon } from "../../action-mappers/login-action-mappers"
 
 const mapStateToProps = (state: IState, ownProps: any) =>{
     return{
@@ -11,4 +10,8 @@ const mapStateToProps = (state: IState, ownProps: any) =>{
     }
 }
 
-export default connect(mapStateToProps)(BattleComponent)
+const mapDispatchToProps ={
+    updateCurrentMutamon
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(BattleComponent)

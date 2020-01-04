@@ -74,7 +74,7 @@ export async function mutamonApiUpdateMonster(monster: Monster){
 
 export async function mutamonApiGetOpponentMonsterByLevel(level: number){
     try{
-        const response = await mutamonClient.get('/mutamon/opponent' + level)
+        const response = await mutamonClient.get('/mutamon/opponent/' + level)
         if(response.status === 200){
             return{
                 status: response.status,
