@@ -307,8 +307,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let userArmour = this.state.currentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
         let npcArmour = this.state.opponentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
 
-        let userDodge = this.state.currentMutamon.speed / (this.state.currentMutamon.speed + this.state.opponentMutamon.speed);
-        let npcDodge = 1 - userDodge;
+        let userDodge = (this.state.currentMutamon.speed / (this.state.currentMutamon.speed + this.state.opponentMutamon.speed)) * .5;
+        let npcDodge = .5 - userDodge;
 
         let userCritStrike = userDmg * 1.5;
         let npcCritStrike = npcDmg * 1.5;
