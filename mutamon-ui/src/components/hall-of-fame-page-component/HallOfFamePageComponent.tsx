@@ -5,6 +5,7 @@ import { Monster } from '../../models/monster'
 import { WinnersDisplayComponent } from './winners-display-component/WinnersDisplayComponent'
 import { mutamonApiGetWinningMonstersById } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router-dom'
+import './hall-of-fame.css'
 
 interface IHallOfFamePageComponentState {
     winners: Monster[]
@@ -44,7 +45,7 @@ export class HallOfFamePageComponent extends React.Component<IHallOfFamePageComp
     render() {
         return (
             this.props.user.userId ?
-                <div>
+                <div id='hofPage'>
                     <NavbarComponent />
                     <WinnersDisplayComponent winners={this.state.winners} />
                 </div>
