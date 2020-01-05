@@ -1,6 +1,6 @@
 #battlePage {
-    margin-top: flex-box;
     margin: 15px;
+    margin-top: flex-box;
 }
 
 #btnRun{
@@ -27,10 +27,10 @@
 }
 
 .column {
+    flex: 1;
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
-    flex: 1;
     padding-left: 20px;
 }
 
