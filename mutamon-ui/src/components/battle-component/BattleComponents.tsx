@@ -32,6 +32,8 @@ interface IBattleComponentState {
 
 export class BattleComponent extends React.Component<IBattleComponentProps, IBattleComponentState>{
 
+    autoFight: boolean = false
+
     constructor(props: any) {
         super(props)
         this.state = {
@@ -71,229 +73,17 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
-    fight = () => {
-        let battleLog = ''
+    autoFightOn = () => {
+        
+        this.autoFight = true
 
-        let userHealth = this.state.userHealthState;
-        let npcHealth = this.state.npcHealthState;
-
-        let userDmg = this.state.currentMutamon.strength * 14;
-        let npcDmg = this.state.opponentMutamon.strength * 14;
-
-        let userCrit = this.state.currentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
-        let npcCrit = this.state.opponentMutamon.strength / (this.state.currentMutamon.strength + this.state.opponentMutamon.strength);
-
-        let npcArmour = this.state.currentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
-        let userArmour = this.state.opponentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
-
-        let userDodge = (this.state.currentMutamon.speed / (this.state.currentMutamon.speed + this.state.opponentMutamon.speed)) * .5;
-        let npcDodge = .5 - userDodge;
-
-        let userCritStrike = userDmg * 1.5;
-        let npcCritStrike = npcDmg * 1.5;
-
-        let userAttackSpeed;
-        let npcAttackSpeed;
-        if (this.state.currentMutamon.speed > this.state.opponentMutamon.speed) {
-            userAttackSpeed = 2;
-            npcAttackSpeed = 1;
-        } else if (this.state.currentMutamon.speed === this.state.opponentMutamon.speed) {
-            userAttackSpeed = 1;
-            npcAttackSpeed = 1;
-        } else {
-            userAttackSpeed = 1;
-            npcAttackSpeed = 2;
-        }
-
-
-
-        if (userAttackSpeed > npcAttackSpeed) {
-            let c1 = Math.random();  //crit chance
-            let c2 = Math.random();
-            let c3 = Math.random();
-            let d1 = Math.random();  //dodge chance
-            let d2 = Math.random();
-            let d3 = Math.random();
-
-            if (c1 > userCrit) {
-                c1 = 0;
-            } else {
-                c1 = 1;
-            }
-
-            if (c2 > userCrit) {
-                c2 = 0;
-            } else {
-                c2 = 1;
-            }
-
-            if (c3 > npcCrit) {
-                c3 = 0;
-            } else {
-                c3 = 1;
-            }
-
-            if (d1 > npcDodge) {
-                d1 = 1;
-            } else {
-                d1 = 0;
-            }
-
-            if (d2 > npcDodge) {
-                d2 = 1;
-            } else {
-                d2 = 0;
-            }
-
-            if (d3 > userDodge) {
-                d3 = 1;
-            } else {
-                d3 = 0;
-            }
-
-            npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.75 - userCritStrike * npcArmour * d1 * c1 * 0.75 - userDmg * npcArmour * d2 * (1 - c2) * 0.75 - userCritStrike * npcArmour * d2 * c2 * 0.75
-            battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) * 0.75 + userCritStrike * npcArmour * d1 * c1 * 0.75 + userDmg * npcArmour * d2 * (1 - c2) * 0.75 + userCritStrike * npcArmour * d2 * c2 * 0.75)} damage from two attacks\n`
-            if (npcHealth <= 0) {
-                this.setState({
-                    ...this.state,
-                    userHealthState: userHealth,
-                    npcHealthState: 0,
-                    fightOver: true,
-                    realUpdate: true
-                })
-            }
-            userHealth = userHealth - npcDmg * userArmour * d3 * (1 - c3) - npcCritStrike * userArmour * d3 * c3
-            battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d3 * (1 - c3) + npcCritStrike * userArmour * d3 * c3)} damage from one attack\n`
-        } else if (userAttackSpeed === npcAttackSpeed) {
-            let c1 = Math.random();  //crit chance
-            let c2 = Math.random();
-            let d1 = Math.random();  //dodge chance
-            let d2 = Math.random();
-
-            if (c1 > userCrit) {
-                c1 = 0;
-            } else {
-                c1 = 1;
-            }
-
-            if (c2 > npcCrit) {
-                c2 = 0;
-            } else {
-                c2 = 1;
-            }
-
-            if (d1 > npcDodge) {
-                d1 = 1;
-            } else {
-                d1 = 0;
-            }
-
-            if (d2 > userDodge) {
-                d2 = 1;
-            } else {
-                d2 = 0;
-            }
-
-            npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) - userCritStrike * npcArmour * d1 * c1
-            battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) + userCritStrike * npcArmour * d1 * c1)} damage from one attack\n`
-            if (npcHealth <= 0) {
-                this.setState({
-                    ...this.state,
-                    userHealthState: userHealth,
-                    npcHealthState: 0,
-                    fightOver: true,
-                    realUpdate: true
-                })
-            }
-            userHealth = userHealth - npcDmg * userArmour * d2 * (1 - c2) - npcCritStrike * userArmour * d2 * c2
-            battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d2 * (1 - c2) + npcCritStrike * userArmour * d2 * c2)} damage from one attack\n`
-        } else {
-            let c1 = Math.random();  //crit chance
-            let c2 = Math.random();
-            let c3 = Math.random();
-            let d1 = Math.random();  //dodge chance
-            let d2 = Math.random();
-            let d3 = Math.random();
-
-            if (c1 > npcCrit) {
-                c1 = 0;
-            } else {
-                c1 = 1;
-            }
-
-            if (c2 > npcCrit) {
-                c2 = 0;
-            } else {
-                c2 = 1;
-            }
-
-            if (c3 > userCrit) {
-                c3 = 0;
-            } else {
-                c3 = 1;
-            }
-
-            if (d1 > userDodge) {
-                d1 = 1;
-            } else {
-                d1 = 0;
-            }
-
-            if (d2 > userDodge) {
-                d2 = 1;
-            } else {
-                d2 = 0;
-            }
-
-            if (d3 > npcDodge) {
-                d3 = 1;
-            } else {
-                d3 = 0;
-            }
-
-            userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.75 - npcCritStrike * userArmour * d1 * c1 * 0.75 - npcDmg * userArmour * d2 * (1 - c2) * 0.75 - npcCritStrike * userArmour * d2 * c2 * 0.75
-            battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) * 0.75 + npcCritStrike * userArmour * d1 * c1 * 0.75 + npcDmg * userArmour * d2 * (1 - c2) * 0.75 + npcCritStrike * userArmour * d2 * c2 * 0.75)} damage from two attacks\n`
-            if (userHealth <= 0) {
-                this.setState({
-                    ...this.state,
-                    userHealthState: 0,
-                    npcHealthState: npcHealth,
-                    fightOver: true,
-                    realUpdate: true
-                })
-            }
-            npcHealth = npcHealth - userDmg * npcArmour * d3 * (1 - c3) - userCritStrike * npcArmour * d3 * c3
-            battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d3 * (1 - c3) + userCritStrike * npcArmour * d3 * c3)} damage from one attack\n`
-        }
-        if (userHealth > 0 && npcHealth > 0) {
-            this.setState({
-                ...this.state,
-                userHealthState: userHealth,
-                npcHealthState: npcHealth,
-                battleLog: `${battleLog} ${this.props.currentMutamon.name}: ${Math.trunc(userHealth)} \n Opponent: ${Math.trunc(npcHealth)}`
-            })
-        } else if (userHealth <= 0) {
-            this.setState({
-                ...this.state,
-                userHealthState: 0,
-                npcHealthState: npcHealth,
-                fightOver: true,
-                realUpdate: true
-            })
-        } else {
-            this.setState({
-                ...this.state,
-                userHealthState: userHealth,
-                npcHealthState: 0,
-                fightOver: true,
-                realUpdate: true
-            })
-        }
-
+        this.fighting()
     }
 
-    // fight logic  -509
+    // fight logic  -325
     fighting = () => {
+
+        let battleLog = ''
 
         let userHealth = this.state.userHealthState;
         let npcHealth = this.state.npcHealthState;
@@ -326,7 +116,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             npcAttackSpeed = 2;
         }
 
-        while (userHealth > 0 && npcHealth > 0) {
+        do {
 
             if (userAttackSpeed > npcAttackSpeed) {
                 let c1 = Math.random();  //crit chance
@@ -373,6 +163,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 }
 
                 npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.75 - userCritStrike * npcArmour * d1 * c1 * 0.75 - userDmg * npcArmour * d2 * (1 - c2) * 0.75 - userCritStrike * npcArmour * d2 * c2 * 0.75
+                battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) * 0.75 + userCritStrike * npcArmour * d1 * c1 * 0.75 + userDmg * npcArmour * d2 * (1 - c2) * 0.75 + userCritStrike * npcArmour * d2 * c2 * 0.75)} damage from two attacks\n`
                 if (npcHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -384,6 +175,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     break;
                 }
                 userHealth = userHealth - npcDmg * userArmour * d3 * (1 - c3) - npcCritStrike * userArmour * d3 * c3
+                battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d3 * (1 - c3) + npcCritStrike * userArmour * d3 * c3)} damage from one attack\n`
             } else if (userAttackSpeed === npcAttackSpeed) {
                 let c1 = Math.random();  //crit chance
                 let c2 = Math.random();
@@ -415,6 +207,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 }
 
                 npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) - userCritStrike * npcArmour * d1 * c1
+                battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) + userCritStrike * npcArmour * d1 * c1)} damage from one attack\n`
                 if (npcHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -426,6 +219,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     break;
                 }
                 userHealth = userHealth - npcDmg * userArmour * d2 * (1 - c2) - npcCritStrike * userArmour * d2 * c2
+                battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d2 * (1 - c2) + npcCritStrike * userArmour * d2 * c2)} damage from one attack\n`
             } else {
                 let c1 = Math.random();  //crit chance
                 let c2 = Math.random();
@@ -471,6 +265,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 }
 
                 userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.75 - npcCritStrike * userArmour * d1 * c1 * 0.75 - npcDmg * userArmour * d2 * (1 - c2) * 0.75 - npcCritStrike * userArmour * d2 * c2 * 0.75
+                battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) * 0.75 + npcCritStrike * userArmour * d1 * c1 * 0.75 + npcDmg * userArmour * d2 * (1 - c2) * 0.75 + npcCritStrike * userArmour * d2 * c2 * 0.75)} damage from two attacks\n`
                 if (userHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -482,13 +277,14 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     break;
                 }
                 npcHealth = npcHealth - userDmg * npcArmour * d3 * (1 - c3) - userCritStrike * npcArmour * d3 * c3
-
+                battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d3 * (1 - c3) + userCritStrike * npcArmour * d3 * c3)} damage from one attack\n`
             }
             if (userHealth > 0 && npcHealth > 0) {
                 this.setState({
                     ...this.state,
                     userHealthState: userHealth,
-                    npcHealthState: npcHealth
+                    npcHealthState: npcHealth,
+                    battleLog: `${battleLog} ${this.props.currentMutamon.name}: ${Math.trunc(userHealth)} \n Opponent: ${Math.trunc(npcHealth)}`
                 })
             } else if (userHealth <= 0) {
                 this.setState({
@@ -507,8 +303,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     realUpdate: true
                 })
             }
-
-        }
+        } while (userHealth > 0 && npcHealth > 0 && this.autoFight)
     }
 
     escape = () => {
@@ -516,7 +311,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let eChance = 0.25; //chance to escape
         let e = Math.random();
         if (e > eChance) {
-            return this.fight(); //escape failed, fight another round and you can escape again
+            return this.fighting(); //escape failed, fight another round and you can escape again
         } else {
 
             this.setState({
@@ -691,13 +486,13 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* Fight */}
                             <br />
-                            <Button onClick={this.fight} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
+                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>Attack</h4>
                             </Button>{' '}
 
                             {/* Auto Fight */}
                             <br />
-                            <Button onClick={this.fighting} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
+                            <Button onClick={this.autoFightOn} color="danger" className="btnAtk" id="btnAtk" disabled={this.state.fightOver}>
                                 <h4>AutoAttack</h4>
                             </Button>{' '}
                         </div>
