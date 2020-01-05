@@ -538,14 +538,16 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             if (newMon.level === 3 || newMon.level === 5 || newMon.level === 7) {
                 return <Redirect to='/mutate'></Redirect>
             }
-            if (newMon.level === 9) {
-                return <Redirect to='/reset'></Redirect>
+            if (newMon.level >= 9) {
+                newMon.activeMonster = false
+                this.props.updateCurrentMutamon(newMon)
+                return <Redirect to='/users'></Redirect>
             }
         } else if (this.state.userHealthState <= 0) {
             let newMon = { ...this.state.currentMutamon }
             newMon.activeMonster = false
             this.props.updateCurrentMutamon(newMon)
-            return <Redirect to='/reset'></Redirect>
+            return <Redirect to='/users'></Redirect>
         }
         return <Redirect to='/users'></Redirect>
     }

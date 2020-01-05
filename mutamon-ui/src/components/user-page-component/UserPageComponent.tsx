@@ -21,7 +21,6 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
             this.props.user.userId ?
             <div>
                 <NavbarComponent />
-
                 <Container>
                     <Row>
                         <Col>
@@ -30,7 +29,7 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
                         </Col>
                         <Col>
                             <Link to="/battle">
-                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" outline >
+                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" outline disabled={!this.props.currentMutamon.activeMonster}>
                                     Next Fight
                                 </Button>
                             </Link>
