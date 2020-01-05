@@ -9,7 +9,7 @@ import { Typography,Box } from '@material-ui/core'
 
 function Copyright() {
     return (
-        <Typography variant='body2' color='textPrimary' align='center'>
+        <Typography variant='body2' color = "textPrimary" align='center'>
             {"Copyright © Mutamon "}
             {new Date().getFullYear()}
             {'.'}
@@ -107,7 +107,6 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                                 value={this.state.username}
                                 onChange={this.updateUsername}
                             />
-           
                         </Container>
 
 
@@ -129,12 +128,13 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
 
                     </FormGroup>
 
-                    <Button color="primary" size="lg" block>Login</Button>
+                    <Button color="primary" size="lg" block >Login</Button>
                     
                 </Form>
                 
-                <Link to='/signup'><Button color="warning" block>Sign Up</Button></Link>                                <Row></Row>
+                <Link to='/signup'><Button color="warning" >Sign Up</Button></Link>                                <Row></Row>
                 <Row></Row>
+                <Col></Col>
 
                 {this.state.userLogedIn && this.goToHome()}
                 </Col>

@@ -1,8 +1,17 @@
 .App {
   text-align: center;
-  color: #000000;
+  color: #ffffff;
+  background-color: #814747;
 
 }
+
+html{
+  text-align: center;
+  color: #ffffff;
+  background-color: #814747;
+
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -24,12 +33,12 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #000000;
 
 }
 
 .App-link {
-  color: #62d9fa;
+  color: #000000;
 }
 
 @keyframes App-logo-spin {
@@ -41,7 +50,7 @@
   }
 }
 body {
-  background: #181818 ;
+  background:  #292929 ;
   display: flexbox;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
