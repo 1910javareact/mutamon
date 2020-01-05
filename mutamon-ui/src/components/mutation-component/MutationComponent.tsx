@@ -19,7 +19,7 @@ export class MutationComponent extends React.PureComponent<IMutationComponentPro
                             <CardText>Speed: {this.props.mutation.speed}</CardText>
                             <CardText>Strength: {this.props.mutation.strength}</CardText>
                             <CardText>Defence: {this.props.mutation.defence}</CardText>
-                            
+
                         </CardBody>
                         <CardFooter></CardFooter>
                     </Card>
