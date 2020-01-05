@@ -40,7 +40,7 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
                 })
             }
         } catch (e) {
-            try{
+            try {
                 let res = await mutamonApiGetMutationChoices(this.props.currentMutamon.level + 1)
                 if (res.status === 200) {
                     this.setState({
