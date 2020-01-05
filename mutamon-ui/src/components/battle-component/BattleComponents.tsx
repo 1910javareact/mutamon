@@ -538,14 +538,16 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             if (newMon.level === 3 || newMon.level === 5 || newMon.level === 7) {
                 return <Redirect to='/mutate'></Redirect>
             }
-            if (newMon.level === 9) {
-                return <Redirect to='/reset'></Redirect>
+            if (newMon.level >= 9) {
+                newMon.activeMonster = false
+                this.props.updateCurrentMutamon(newMon)
+                return <Redirect to='/users'></Redirect>
             }
         } else if (this.state.userHealthState <= 0) {
             let newMon = { ...this.state.currentMutamon }
             newMon.activeMonster = false
             this.props.updateCurrentMutamon(newMon)
-            return <Redirect to='/reset'></Redirect>
+            return <Redirect to='/users'></Redirect>
         }
         return <Redirect to='/users'></Redirect>
     }
@@ -612,6 +614,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             <Table borderless className="playerStats" id="playerStats">
                                 <thead>
                                     <tr>
+                                        <th>Level</th>
                                         <th>Strength</th>
                                         <th>Speed</th>
                                         <th>Defence</th>
@@ -619,6 +622,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>{this.props.currentMutamon.level}</td>
                                         <td>{this.props.currentMutamon.strength}</td>
                                         <td>{this.props.currentMutamon.speed}</td>
                                         <td>{this.props.currentMutamon.defence}</td>
