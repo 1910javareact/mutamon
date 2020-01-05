@@ -612,6 +612,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             <Table borderless className="playerStats" id="playerStats">
                                 <thead>
                                     <tr>
+                                        <th>Level</th>
                                         <th>Strength</th>
                                         <th>Speed</th>
                                         <th>Defence</th>
@@ -619,6 +620,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>{this.props.currentMutamon.level}</td>
                                         <td>{this.props.currentMutamon.strength}</td>
                                         <td>{this.props.currentMutamon.speed}</td>
                                         <td>{this.props.currentMutamon.defence}</td>
