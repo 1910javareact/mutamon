@@ -5,10 +5,10 @@ import { IState } from "../../reducers"
 
 
 const mapStateToProps = (state: IState) => {
-    return {
-      currentMutamon: state.login.currentMutamon,
-      user: state.login.user
-    }
+  return {
+    currentMutamon: state.login.currentMutamon,
+    user: state.login.user
+  }
 }
 
 export default connect(mapStateToProps)(UserPageComponet)

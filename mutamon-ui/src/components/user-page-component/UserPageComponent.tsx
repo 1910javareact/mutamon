@@ -8,6 +8,8 @@ import "./UserPageComponent.css"
 import { Link, Redirect } from "react-router-dom";
 import { User } from "../../models/user";
 import { MonsterComponent } from "../monster-component/MonsterComponent";
+import AdvertisementComponent from "../advertisement-component/AdvertisementComponent";
+// import AdvertisementComponent from "../advertisement-component/AdvertisementComponent";
 
 interface IUserPageComponentProps {
     currentMutamon: Monster
@@ -19,32 +21,40 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
     render() {
         return (
             this.props.user.userId ?
-                <div>
-                    <NavbarComponent />
-                    <Container>
-                        <Row>
-                            <Col>
-                                <img id='profilepic' src={Monsterpic} alt='Monster' />
-                                <MonsterComponent monster={this.props.currentMutamon}></MonsterComponent>
-                            </Col>
-                            <Col>
-                                <Link to="/battle">
-                                    <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" >
-                                        Next Fight
-                                </Button>
-                                </Link>
-                                <Link to='/reset'>
-                                    <Button className="Restartbutton" id="Restartbutton">
-                                        New Mutamon!
-                                    </Button>
-                                </Link>
+            <div>
+                <NavbarComponent />
 
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-                :
-                <Redirect to='/login'></Redirect>
+                <Container>
+                    <Row id='adRow'>
+                        <Col>
+                            <AdvertisementComponent />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <img id='profilepic' src={Monsterpic} alt='Monster' />
+                            <MonsterComponent monster={this.props.currentMutamon}></MonsterComponent>
+                        </Col>
+                        <Col>
+                            <Link to="/battle">
+                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" outline >
+                                    Next Fight
+                                </Button>
+                            </Link>
+                            <Link to='/reset'>
+                                <Button className="Restartbutton" id="Restartbutton">
+                                    New Mutamon!
+                                    </Button>
+                            </Link>
+
+                        </Col>
+                    </Row>
+                </Container>
+
+
+            </div>
+            :
+            <Redirect to='/login'></Redirect>
         )
     }
 }

@@ -55,7 +55,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     }
 
     goToHome = () => {
-        return (<Redirect to='/users'/>)
+        return (<Redirect to='/users' />)
     }
 
     wrongUserOrPass = () => {
@@ -84,7 +84,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                             />
                         </Col>
                     </FormGroup>
-                    <br/>
+                    <br />
                     <FormGroup row className="text-input">
                         <Label for="examplePassword" sm={2}>Password: </Label>
                         <Col sm={10}>
@@ -99,7 +99,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                         </Col>
                     </FormGroup>
                     <Button color="primary">Login</Button>
-                    
+
                 </Form>
                 <Link to='/signup'><Button color="warning">Sign Up</Button></Link>
                 {this.state.userLogedIn && this.goToHome()}

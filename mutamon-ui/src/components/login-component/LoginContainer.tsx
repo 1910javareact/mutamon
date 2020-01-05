@@ -1,10 +1,10 @@
 import { IState } from "../../reducers";
 import { connect } from "react-redux";
 import { LoginComponent } from "./LoginComponent";
-import {userLogin, currentUserMutamon} from '../../action-mappers/login-action-mappers'
+import { userLogin, currentUserMutamon } from '../../action-mappers/login-action-mappers'
 
 const mapStateToProps = (state: IState) => {
-    return{
+    return {
         user: state.login.user,
     }
 }
@@ -14,4 +14,4 @@ const mapDispatchToProps = {
     currentUserMutamon
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent)

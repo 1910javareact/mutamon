@@ -4,6 +4,7 @@
     font-size: 110px;
     margin: 15%;
     background-color: rgb(29, 145, 29);
+    border-radius: 2%;
     
 }
 #profilepic{
@@ -18,4 +19,21 @@
 #xpbar{
     margin: 5%;
    
+}
+
+#adRow{
+    height: 200px;
+}
+
+.carousel-inner img{
+    height: 200px;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-content: center;
+}
+
+div.column{
+    border-top: 10%;
 }
