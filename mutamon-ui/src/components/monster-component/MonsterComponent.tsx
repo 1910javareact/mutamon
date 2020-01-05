@@ -1,6 +1,6 @@
 import React from 'react'
 import { Monster } from '../../models/monster';
-import { Card, CardBody, CardText, CardFooter, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 interface IMonsterComponentProps {
     monster: Monster

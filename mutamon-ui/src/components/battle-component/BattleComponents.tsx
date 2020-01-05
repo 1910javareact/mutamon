@@ -9,6 +9,9 @@ import Monster2 from '../../assests/monster2.jpg'
 import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router'
 
+
+
+
 interface IBattleComponentProps {
     user: User
     currentMutamon: Monster
@@ -289,7 +292,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
     }
 
-
+    // fight logic  -509
     fighting = () => {
 
         let userHealth = this.state.userHealthState;
@@ -508,20 +511,20 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
-    escape =() => {
+    escape = () => {
 
         let eChance = 0.25; //chance to escape
         let e = Math.random();
-        if(e > eChance){
+        if (e > eChance) {
             return this.fight(); //escape failed, fight another round and you can escape again
-        }else{
+        } else {
 
             this.setState({
                 ...this.state,
                 realUpdate: true
             })
             return this.fightOver()  //run chicken run
-        
+
         }
 
     }
@@ -574,7 +577,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         if (this.state.battleLog) {
             return (
                 <div>
-                    <Button color='danger' onClick={()=>this.setState({...this.state, battleLog: ''})}>
+                    <Button color='danger' onClick={() => this.setState({ ...this.state, battleLog: '' })}>
                         Get me outta here!
                     </Button>
                 </div>
@@ -631,11 +634,11 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* escape button */}
                             <br />
-                            
-                                <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
-                                    <h4>escape</h4>
-                                </Button>{' '}
-                            
+
+                            <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
+                                <h4>escape</h4>
+                            </Button>{' '}
+
                         </div>
 
                         <div className="column" id="printoutColumn">

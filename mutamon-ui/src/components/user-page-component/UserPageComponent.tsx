@@ -9,6 +9,7 @@ import { Link, Redirect } from "react-router-dom";
 import { User } from "../../models/user";
 import { MonsterComponent } from "../monster-component/MonsterComponent";
 import AdvertisementComponent from "../advertisement-component/AdvertisementComponent";
+// import AdvertisementComponent from "../advertisement-component/AdvertisementComponent";
 
 interface IUserPageComponentProps {
     currentMutamon: Monster
@@ -36,7 +37,7 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
                         </Col>
                         <Col>
                             <Link to="/battle">
-                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" >
+                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" outline >
                                     Next Fight
                                 </Button>
                             </Link>
