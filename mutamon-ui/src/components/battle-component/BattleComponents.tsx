@@ -9,6 +9,9 @@ import Monster2 from '../../assests/monster2.jpg'
 import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router'
 
+
+
+
 interface IBattleComponentProps {
     user: User
     currentMutamon: Monster
@@ -148,8 +151,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 d3 = 0;
             }
 
-            npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) - userCritStrike * npcArmour * d1 * c1 - userDmg * npcArmour * d2 * (1 - c2) - userCritStrike * npcArmour * d2 * c2
-            battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) + userCritStrike * npcArmour * d1 * c1 + userDmg * npcArmour * d2 * (1 - c2) + userCritStrike * npcArmour * d2 * c2)} damage from two attacks\n`
+            npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.75 - userCritStrike * npcArmour * d1 * c1 * 0.75 - userDmg * npcArmour * d2 * (1 - c2) * 0.75 - userCritStrike * npcArmour * d2 * c2 * 0.75
+            battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) * 0.75 + userCritStrike * npcArmour * d1 * c1 * 0.75 + userDmg * npcArmour * d2 * (1 - c2) * 0.75 + userCritStrike * npcArmour * d2 * c2 * 0.75)} damage from two attacks\n`
             if (npcHealth <= 0) {
                 this.setState({
                     ...this.state,
@@ -248,8 +251,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 d3 = 0;
             }
 
-            userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) - npcCritStrike * userArmour * d1 * c1 - npcDmg * userArmour * d2 * (1 - c2) - npcCritStrike * userArmour * d2 * c2
-            battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) + npcCritStrike * userArmour * d1 * c1 + npcDmg * userArmour * d2 * (1 - c2) + npcCritStrike * userArmour * d2 * c2)} damage from two attacks\n`
+            userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.75 - npcCritStrike * userArmour * d1 * c1 * 0.75 - npcDmg * userArmour * d2 * (1 - c2) * 0.75 - npcCritStrike * userArmour * d2 * c2 * 0.75
+            battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) * 0.75 + npcCritStrike * userArmour * d1 * c1 * 0.75 + npcDmg * userArmour * d2 * (1 - c2) * 0.75 + npcCritStrike * userArmour * d2 * c2 * 0.75)} damage from two attacks\n`
             if (userHealth <= 0) {
                 this.setState({
                     ...this.state,
@@ -289,7 +292,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
     }
 
-
+    // fight logic  -509
     fighting = () => {
 
         let userHealth = this.state.userHealthState;
@@ -304,8 +307,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         let userArmour = this.state.currentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
         let npcArmour = this.state.opponentMutamon.defence / (this.state.currentMutamon.defence + this.state.opponentMutamon.defence);
 
-        let userDodge = this.state.currentMutamon.speed / (this.state.currentMutamon.speed + this.state.opponentMutamon.speed);
-        let npcDodge = 1 - userDodge;
+        let userDodge = (this.state.currentMutamon.speed / (this.state.currentMutamon.speed + this.state.opponentMutamon.speed)) * .5;
+        let npcDodge = .5 - userDodge;
 
         let userCritStrike = userDmg * 1.5;
         let npcCritStrike = npcDmg * 1.5;
@@ -369,7 +372,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     d3 = 0;
                 }
 
-                npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) - userCritStrike * npcArmour * d1 * c1 - userDmg * npcArmour * d2 * (1 - c2) - userCritStrike * npcArmour * d2 * c2
+                npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.75 - userCritStrike * npcArmour * d1 * c1 * 0.75 - userDmg * npcArmour * d2 * (1 - c2) * 0.75 - userCritStrike * npcArmour * d2 * c2 * 0.75
                 if (npcHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -467,7 +470,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     d3 = 0;
                 }
 
-                userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) - npcCritStrike * userArmour * d1 * c1 - npcDmg * userArmour * d2 * (1 - c2) - npcCritStrike * userArmour * d2 * c2
+                userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.75 - npcCritStrike * userArmour * d1 * c1 * 0.75 - npcDmg * userArmour * d2 * (1 - c2) * 0.75 - npcCritStrike * userArmour * d2 * c2 * 0.75
                 if (userHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -508,20 +511,20 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         }
     }
 
-    escape =() => {
+    escape = () => {
 
         let eChance = 0.25; //chance to escape
         let e = Math.random();
-        if(e > eChance){
+        if (e > eChance) {
             return this.fight(); //escape failed, fight another round and you can escape again
-        }else{
+        } else {
 
             this.setState({
                 ...this.state,
                 realUpdate: true
             })
             return this.fightOver()  //run chicken run
-        
+
         }
 
     }
@@ -535,14 +538,16 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
             if (newMon.level === 3 || newMon.level === 5 || newMon.level === 7) {
                 return <Redirect to='/mutate'></Redirect>
             }
-            if (newMon.level === 9) {
-                return <Redirect to='/reset'></Redirect>
+            if (newMon.level >= 9) {
+                newMon.activeMonster = false
+                this.props.updateCurrentMutamon(newMon)
+                return <Redirect to='/users'></Redirect>
             }
         } else if (this.state.userHealthState <= 0) {
             let newMon = { ...this.state.currentMutamon }
             newMon.activeMonster = false
             this.props.updateCurrentMutamon(newMon)
-            return <Redirect to='/reset'></Redirect>
+            return <Redirect to='/users'></Redirect>
         }
         return <Redirect to='/users'></Redirect>
     }
@@ -574,7 +579,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         if (this.state.battleLog) {
             return (
                 <div>
-                    <Button color='danger' onClick={()=>this.setState({...this.state, battleLog: ''})}>
+                    <Button color='danger' onClick={() => this.setState({ ...this.state, battleLog: '' })}>
                         Get me outta here!
                     </Button>
                 </div>
@@ -609,6 +614,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             <Table borderless className="playerStats" id="playerStats">
                                 <thead>
                                     <tr>
+                                        <th>Level</th>
                                         <th>Strength</th>
                                         <th>Speed</th>
                                         <th>Defence</th>
@@ -616,6 +622,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>{this.props.currentMutamon.level}</td>
                                         <td>{this.props.currentMutamon.strength}</td>
                                         <td>{this.props.currentMutamon.speed}</td>
                                         <td>{this.props.currentMutamon.defence}</td>
@@ -631,11 +638,11 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* escape button */}
                             <br />
-                            
-                                <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
-                                    <h4>escape</h4>
-                                </Button>{' '}
-                            
+
+                            <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
+                                <h4>escape</h4>
+                            </Button>{' '}
+
                         </div>
 
                         <div className="column" id="printoutColumn">

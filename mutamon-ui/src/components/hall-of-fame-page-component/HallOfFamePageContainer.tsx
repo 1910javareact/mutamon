@@ -2,14 +2,14 @@ import { IState } from "../../reducers"
 import { connect } from "react-redux"
 import { HallOfFamePageComponent } from "./HallOfFamePageComponent"
 
-const mapStateToProps = (state:IState) =>{
-    return{
+const mapStateToProps = (state: IState) => {
+    return {
         user: state.login.user,
     }
 }
 
-const mapDispatchToProps ={
+const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HallOfFamePageComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(HallOfFamePageComponent)

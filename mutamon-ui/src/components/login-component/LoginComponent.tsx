@@ -69,7 +69,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
     }
 
     goToHome = () => {
-        return (<Redirect to='/users'/>)
+        return (<Redirect to='/users' />)
     }
 
     wrongUserOrPass = () => {

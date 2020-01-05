@@ -19,32 +19,34 @@ export class UserPageComponet extends React.PureComponent<IUserPageComponentProp
     render() {
         return (
             this.props.user.userId ?
-                <div>
-                    <NavbarComponent />
-                    <Container>
-                        <Row>
-                            <Col>
-                                <img id='profilepic' src={Monsterpic} alt='Monster' />
-                                <MonsterComponent monster={this.props.currentMutamon}></MonsterComponent>
-                            </Col>
-                            <Col>
-                                <Link to="/battle">
-                                    <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" >
-                                        Next Fight
+            <div>
+                <NavbarComponent />
+                <Container>
+                    <Row>
+                        <Col>
+                            <img id='profilepic' src={Monsterpic} alt='Monster' />
+                            <MonsterComponent monster={this.props.currentMutamon}></MonsterComponent>
+                        </Col>
+                        <Col>
+                            <Link to="/battle">
+                                <Button className="FightButton" id="FightButton" variant="Next Fight" size="lg" outline disabled={!this.props.currentMutamon.activeMonster}>
+                                    Next Fight
                                 </Button>
-                                </Link>
-                                <Link to='/reset'>
-                                    <Button className="Restartbutton" id="Restartbutton">
-                                        New Mutamon!
+                            </Link>
+                            <Link to='/reset'>
+                                <Button className="Restartbutton" id="Restartbutton">
+                                    New Mutamon!
                                     </Button>
-                                </Link>
+                            </Link>
 
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-                :
-                <Redirect to='/login'></Redirect>
+                        </Col>
+                    </Row>
+                </Container>
+
+
+            </div>
+            :
+            <Redirect to='/login'></Redirect>
         )
     }
 }
