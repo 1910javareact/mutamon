@@ -2,7 +2,6 @@ import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Input, Button, Col, Alert, Container, Row } from 'reactstrap'
 import { Redirect, Link , } from 'react-router-dom'
 import { User } from '../../models/user'
-import './login.css'
 import Monsterpic from "../../assests/MutamonHomePage.png"
 import { Typography,Box } from '@material-ui/core'
 
