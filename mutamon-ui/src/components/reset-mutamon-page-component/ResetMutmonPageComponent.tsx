@@ -62,38 +62,38 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
             this.props.user.userId ?
                 <div>
                     <img id='Create-a-new-Mutamon' src={Monsterpic} alt='Monster' />
-<Container>
-<Col></Col>
-<Col>
-                    <Form onSubmit={this.resetMonster}>
-                        
-                        <FormGroup row className="text-input">
-                            <Label for="exampleName" id="" lg={12} style={{ fontWeight: "bold" }}>Name: </Label>
-                            <Row></Row>
+                    <Container>
+                        <Col></Col>
+                        <Col>
+                            <Form onSubmit={this.resetMonster}>
 
-                            <Container className="themed-container">
+                                <FormGroup row className="text-input">
+                                    <Label for="exampleName" id="" lg={12} style={{ fontWeight: "bold" }}>Name: </Label>
+                                    <Row></Row>
 
-                                <Input 
-                                    type="text"
-                                    name="name"
-                                    id="exampleName"
-                                    placeholder="Name"
-                                    value={this.state.name}
-                                    onChange={this.updateName}
-                                />
-                                </Container>
-                        </FormGroup>
-                        <Button color = "primary" size = "lg">
-                            New Mutamon!
+                                    <Container className="themed-container">
+
+                                        <Input
+                                            type="text"
+                                            name="name"
+                                            id="exampleName"
+                                            placeholder="Name"
+                                            value={this.state.name}
+                                            onChange={this.updateName}
+                                        />
+                                    </Container>
+                                </FormGroup>
+                                <Button color="primary" size="lg">
+                                    New Mutamon!
                         </Button>
-                    </Form>
-                    <Row></Row>
+                            </Form>
+                            <Row></Row>
                             <Col></Col>
-                    {this.state.mutamonUpdated && this.goToHome()}
-                    </Col>
-                    <Col></Col>
+                            {this.state.mutamonUpdated && this.goToHome()}
+                        </Col>
+                        <Col></Col>
 
-</Container>
+                    </Container>
                 </div>
                 :
                 <Redirect to='/login'></Redirect>
