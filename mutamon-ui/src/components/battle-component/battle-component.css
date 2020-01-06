@@ -1,5 +1,4 @@
 #battlePage {
-    margin: 15px;
     margin-top: flex-box;
 }
 
@@ -36,6 +35,9 @@
 
 .battlePage{
     background-color: #814747;
+    padding-left: 90px;
+
+    text-align: center;
 }
 
 .progress-bar{
