@@ -1,11 +1,11 @@
 import React from 'react'
-import { Progress, Button, Table, Jumbotron, Container } from 'reactstrap'
+import { Progress, Button, Table, Jumbotron, Container, Row } from 'reactstrap'
 import './battle-component.css'
 import { User } from '../../models/user'
 import { Monster } from '../../models/monster'
 import { Mutation } from '../../models/mutation'
-import Monster1 from '../../assests/monster1.jpg'
-import Monster2 from '../../assests/monster2.jpg'
+import Monster1 from '../../assests/test2.png'
+import Monster2 from '../../assests/test.png'
 import { mutamonApiGetOpponentMonsterByLevel } from '../../remote/mutamon-clients/mutamon-mutamon'
 import { Redirect } from 'react-router'
 
@@ -392,7 +392,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         });
 
         return (
-
+                <Container>
+                    <Row>
             this.props.user.userId ?
                 <div className="battlePage">
                     <div className="row">
@@ -424,7 +425,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                     </tr>
                                 </tbody>
                             </Table>
-
+                            
                             {/* Player health bar */}
                             <div className="playerHealth" id="playerHealth">
                                 {Math.trunc(this.state.userHealthState / (this.state.currentMutamon.defence * 100) * 100)}%
@@ -500,6 +501,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                 </div>
                 :
                 <Redirect to='/login'></Redirect>
+                </Row>
+                </Container>
         )
     }
 }
