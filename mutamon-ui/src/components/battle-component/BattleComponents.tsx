@@ -162,8 +162,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     d3 = 0;
                 }
 
-                npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.75 - userCritStrike * npcArmour * d1 * c1 * 0.75 - userDmg * npcArmour * d2 * (1 - c2) * 0.75 - userCritStrike * npcArmour * d2 * c2 * 0.75
-                battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) * 0.75 + userCritStrike * npcArmour * d1 * c1 * 0.75 + userDmg * npcArmour * d2 * (1 - c2) * 0.75 + userCritStrike * npcArmour * d2 * c2 * 0.75)} damage from two attacks\n`
+                npcHealth = npcHealth - userDmg * npcArmour * d1 * (1 - c1) * 0.7 - userCritStrike * npcArmour * d1 * c1 * 0.7 - userDmg * npcArmour * d2 * (1 - c2) * 0.7 - userCritStrike * npcArmour * d2 * c2 * 0.7
+                battleLog += `Opponent took ${Math.trunc(userDmg * npcArmour * d1 * (1 - c1) * 0.7 + userCritStrike * npcArmour * d1 * c1 * 0.7 + userDmg * npcArmour * d2 * (1 - c2) * 0.7 + userCritStrike * npcArmour * d2 * c2 * 0.7)} damage from two attacks\n`
                 if (npcHealth <= 0) {
                     this.setState({
                         ...this.state,
@@ -264,8 +264,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                     d3 = 0;
                 }
 
-                userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.75 - npcCritStrike * userArmour * d1 * c1 * 0.75 - npcDmg * userArmour * d2 * (1 - c2) * 0.75 - npcCritStrike * userArmour * d2 * c2 * 0.75
-                battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) * 0.75 + npcCritStrike * userArmour * d1 * c1 * 0.75 + npcDmg * userArmour * d2 * (1 - c2) * 0.75 + npcCritStrike * userArmour * d2 * c2 * 0.75)} damage from two attacks\n`
+                userHealth = userHealth - npcDmg * userArmour * d1 * (1 - c1) * 0.7 - npcCritStrike * userArmour * d1 * c1 * 0.7 - npcDmg * userArmour * d2 * (1 - c2) * 0.7 - npcCritStrike * userArmour * d2 * c2 * 0.7
+                battleLog += `${this.props.currentMutamon.name} took ${Math.trunc(npcDmg * userArmour * d1 * (1 - c1) * 0.7 + npcCritStrike * userArmour * d1 * c1 * 0.7 + npcDmg * userArmour * d2 * (1 - c2) * 0.7 + npcCritStrike * userArmour * d2 * c2 * 0.7)} damage from two attacks\n`
                 if (userHealth <= 0) {
                     this.setState({
                         ...this.state,
