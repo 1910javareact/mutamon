@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mutation } from '../../models/mutation';
 import { Monster } from '../../models/monster';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import { mutamonApiGetMutationChoices } from '../../remote/mutamon-clients/mutamon-mutations';
 import { User } from '../../models/user';
 import { MutationComponent } from '../mutation-component/MutationComponent';
@@ -66,15 +66,15 @@ export class MutationSelectionPageComponent extends React.Component<MutationSele
         })
 
         return (
-            this.props.user.userId ?
-                this.state.validMutation ?
+            // this.props.user.userId ?
+            //     this.state.validMutation ?
                     <div>
                         {mutations}
                     </div>
-                    :
-                    <Redirect to='/users'></Redirect>
-                :
-                <Redirect to='/login'></Redirect>
+                //     :
+                //     <Redirect to='/users'></Redirect>
+                // :
+                // <Redirect to='/login'></Redirect>
         )
     }
 }
