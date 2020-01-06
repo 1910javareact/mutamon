@@ -392,15 +392,15 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
         });
 
         return (
-                <Container>
-                    <Row>
             this.props.user.userId ?
+                    <Row>
+            
                 <div className="battlePage">
                     <div className="row">
                         <div className="column" id="playerColumn">
                             <div className="playerTitle" id="playerTitle">
-                                <h1>{this.props.user.username}</h1>
-                                <h4>{this.props.currentMutamon.name}</h4>
+                                <h1 className ="playerUser">{this.props.user.username}</h1>
+                                <h4 className = "playerMutamon">{this.props.currentMutamon.name}</h4>
                             </div>
 
                             {/* User Monster Pic */}
@@ -440,7 +440,6 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             </Button>{' '}
 
                         </div>
-
                         <div className="column" id="printoutColumn">
                             <Jumbotron fluid>
                                 <Container fluid>
@@ -453,8 +452,8 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                         <div className="column" id="opponentColumn">
                             <div className="opponentTitle" id="opponentTitle">
-                                <h1>Opponent</h1>
-                                <h4>{this.state.opponentMutamon.name}</h4>
+                                <h1 className="opponent">Opponent</h1>
+                                <h4 className = "opponentName">{this.state.opponentMutamon.name}</h4>
                             </div>
 
                             {/* Opponent Monster Pic */}
@@ -499,10 +498,10 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                         </div>
                     </div>
                 </div>
+                </Row>
                 :
                 <Redirect to='/login'></Redirect>
-                </Row>
-                </Container>
+                
         )
     }
 }

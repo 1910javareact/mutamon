@@ -61,8 +61,9 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
             this.props.user.userId ?
                 <div>
                     <Form onSubmit={this.resetMonster}>
+                        
                         <FormGroup row className="text-input">
-                            <Label for="exampleName" id="" sm={2}>Name: </Label>
+                            <Label for="exampleName" id="" sm={1}>Name: </Label>
                             <Col sm={10}>
                                 <Input
                                     type="text"
