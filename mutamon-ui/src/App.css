@@ -76,3 +76,15 @@ h5{
 background-color: #814747 !important;
 
 }
+
+.page-columns {
+  margin: 50px;
+  align-content: center;
+
+
+}
+
+.mutation {
+  font-size: 25px !important;
+  
+}
