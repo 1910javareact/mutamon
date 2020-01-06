@@ -1,8 +1,9 @@
 import React, { SyntheticEvent } from 'react'
 import { Monster } from '../../models/monster';
-import { Button, Form, FormGroup, Label, Col, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Col, Input, Container, Row } from 'reactstrap';
 import { Redirect } from 'react-router';
 import { User } from '../../models/user';
+import Monsterpic from "../../assests/Create-a-new-Mutamon.png"
 
 interface IResetMutamonPageProps {
     user: User
@@ -60,12 +61,19 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
         return (
             this.props.user.userId ?
                 <div>
+                    <img id='Create-a-new-Mutamon' src={Monsterpic} alt='Monster' />
+<Container>
+<Col></Col>
+<Col>
                     <Form onSubmit={this.resetMonster}>
                         
                         <FormGroup row className="text-input">
-                            <Label for="exampleName" id="" sm={1}>Name: </Label>
-                            <Col sm={10}>
-                                <Input
+                            <Label for="exampleName" id="" lg={12} style={{ fontWeight: "bold" }}>Name: </Label>
+                            <Row></Row>
+
+                            <Container className="themed-container">
+
+                                <Input 
                                     type="text"
                                     name="name"
                                     id="exampleName"
@@ -73,13 +81,19 @@ export class ResetMutamonPageComponent extends React.Component<IResetMutamonPage
                                     value={this.state.name}
                                     onChange={this.updateName}
                                 />
-                            </Col>
+                                </Container>
                         </FormGroup>
-                        <Button>
+                        <Button color = "primary" size = "lg">
                             New Mutamon!
                         </Button>
                     </Form>
+                    <Row></Row>
+                            <Col></Col>
                     {this.state.mutamonUpdated && this.goToHome()}
+                    </Col>
+                    <Col></Col>
+
+</Container>
                 </div>
                 :
                 <Redirect to='/login'></Redirect>

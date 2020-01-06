@@ -1,14 +1,14 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Input, Button, Col, Alert, Container, Row } from 'reactstrap'
-import { Redirect, Link , } from 'react-router-dom'
+import { Redirect, Link, } from 'react-router-dom'
 import { User } from '../../models/user'
 import Monsterpic from "../../assests/MutamonHomePage.png"
-import { Typography,Box } from '@material-ui/core'
+import { Typography, Box } from '@material-ui/core'
 
 
 function Copyright() {
     return (
-        <Typography variant='body2' color = "textPrimary" align='center'>
+        <Typography variant='body2' color="textPrimary" align='center'>
             {"Copyright © Mutamon "}
             {new Date().getFullYear()}
             {'.'}
@@ -84,67 +84,67 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
 
     render() {
         return (
-            
+
             <div id="login-div">
                 {this.state.invalidCredentials && this.wrongUserOrPass()}
                 <img id='homePageLogo' src={Monsterpic} alt='Monster' />
-                        
-                        <Container>
-                            <Row>
-                                <Col></Col>
+
+                <Container>
+                    <Row>
+                        <Col></Col>
                         <Col>
-                <Form onSubmit={this.submitLogin} id ="loginForm"className='loginForm'>
-                    <FormGroup row className="text-input">
-                        <Label for="exampleUsername" id="" lg={12}style={{fontWeight: "bold"}}>Username: </Label>
-                        <Row></Row>
-                        <Container className="themed-container">                     
-                            <Input
-                                type="text"
-                                name="Username"
-                                id="exampleUsername"
-                                placeholder="Username *"
-                                value={this.state.username}
-                                onChange={this.updateUsername}
-                            />
-                        </Container>
+                            <Form onSubmit={this.submitLogin} id="loginForm" className='loginForm'>
+                                <FormGroup row className="text-input">
+                                    <Label for="exampleUsername" id="" lg={12} style={{ fontWeight: "bold" }}>Username: </Label>
+                                    <Row></Row>
+                                    <Container className="themed-container">
+                                        <Input
+                                            type="text"
+                                            name="Username"
+                                            id="exampleUsername"
+                                            placeholder="Username *"
+                                            value={this.state.username}
+                                            onChange={this.updateUsername}
+                                        />
+                                    </Container>
 
 
-                    </FormGroup>
-                    <FormGroup row className="text-input">
-                        <Label for="examplePassword" sm={12}style={{fontWeight: "bold"}}>Password: </Label>
-                        <Container className="themed-container">
-                            <Input
-                                type="password"
-                                required
-                                name="Password"
-                                id="examplePassword"
-                                placeholder="Password *"
-                                value={this.state.password}
-                                onChange={this.updatePassword}
-                            />
-                        </Container>
+                                </FormGroup>
+                                <FormGroup row className="text-input">
+                                    <Label for="examplePassword" sm={12} style={{ fontWeight: "bold" }}>Password: </Label>
+                                    <Container className="themed-container">
+                                        <Input
+                                            type="password"
+                                            required
+                                            name="Password"
+                                            id="examplePassword"
+                                            placeholder="Password *"
+                                            value={this.state.password}
+                                            onChange={this.updatePassword}
+                                        />
+                                    </Container>
 
 
-                    </FormGroup>
+                                </FormGroup>
 
-                    <Button color="primary" size="lg" block >Login</Button>
-                    
-                </Form>
-                
-                <Link to='/signup'><Button color="warning" >Sign Up</Button></Link>                                <Row></Row>
-                <Row></Row>
-                <Col></Col>
+                                <Button color="primary" size="lg" block >Login</Button>
 
-                {this.state.userLogedIn && this.goToHome()}
-                </Col>
-                <Col></Col>
-                        </Row>
-                        <Box mt={8}>
-                    <Copyright />
-                </Box>
-                    </Container>
+                            </Form>
+
+                            <Link to='/signup'><Button color="warning" >Sign Up</Button></Link>                                <Row></Row>
+                            <Row></Row>
+                            <Col></Col>
+
+                            {this.state.userLogedIn && this.goToHome()}
+                        </Col>
+                        <Col></Col>
+                    </Row>
+                    <Box mt={8}>
+                        <Copyright />
+                    </Box>
+                </Container>
             </div>
 
         )
-    }      
+    }
 }

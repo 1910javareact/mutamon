@@ -408,7 +408,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* Players Current stats */}
                             <Table borderless className="playerStats" id="playerStats">
-                                <thead>
+                                <thead className = "playerStatsHd">
                                     <tr>
                                         <th>Level</th>
                                         <th>Strength</th>
@@ -416,7 +416,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                                         <th>Defence</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className = "playerStatsTbody">
                                     <tr>
                                         <td>{this.props.currentMutamon.level}</td>
                                         <td>{this.props.currentMutamon.strength}</td>
@@ -461,14 +461,14 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
 
                             {/* Opponents stats */}
                             <Table borderless className="opponentStats" id="opponentStats">
-                                <thead>
+                                <thead className = "opponentStatsHd">
                                     <tr>
                                         <th>Strength</th>
                                         <th>Speed</th>
                                         <th>Defence</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className = "opponentStatsTbody">
                                     <tr>
                                         <td>{this.state.opponentMutamon.strength}</td>
                                         <td>{this.state.opponentMutamon.speed}</td>

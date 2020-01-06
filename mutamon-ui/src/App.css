@@ -57,6 +57,13 @@ html {
   font-family: 'Fira Sans', sans-serif;
 
 }
+/* styling for all components below */
+
+/* sign up page */
+.signUpUser{
+width: 300px;
+
+}
 
 
 .card-body {
@@ -80,6 +87,7 @@ background-color: #814747 !important;
 .page-columns {
   margin: 50px;
   align-content: center;
+  margin-left: 50px;
 
 
 }
@@ -102,14 +110,41 @@ background-color: #814747 !important;
 
 .playerStats{
   border-color: #396bba;
-  background-color: #ffe927;
+  background-color: #ffe927c4;
   border-radius: 19ex !important;
 }
+
+.playerStatsHd{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.playerStatsTbody{
+  font-size: 20px !important;
+  font-weight: bolder;
+  color: rgb(204, 0, 0);
+
+}
+
 
 .opponentStats{
   border-color: #396bba;
   background-color: #ffe927;
   border-radius: 19ex !important;
+
+}
+
+.opponentStatsHd{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.opponentStatsTbody{
+  font-size: 20px !important;
+  font-weight: bolder;
+  color: rgb(204, 0, 0);
 
 }
 
@@ -223,3 +258,4 @@ text-transform: capitalize;}
 .text-input{
   margin-top: 10%;
 }
+
