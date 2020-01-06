@@ -57,6 +57,13 @@ html {
   font-family: 'Fira Sans', sans-serif;
 
 }
+/* styling for all components below */
+
+/* sign up page */
+.signUpUser{
+width: 300px;
+
+}
 
 
 .card-body {
@@ -76,3 +83,179 @@ h5{
 background-color: #814747 !important;
 
 }
+
+.page-columns {
+  margin: 50px;
+  align-content: center;
+  margin-left: 50px;
+
+
+}
+
+.mutation {
+  font-size: 30px !important;
+  
+}
+.display-3{
+  color: #ffffff ;
+  font-weight: bolder !important;
+
+}
+.lead{
+  color: #ffe927 !important;
+  font-weight: lighter !important;
+  text-transform: uppercase;
+
+}
+
+.playerStats{
+  border-color: #396bba;
+  background-color: #ffe927c4;
+  border-radius: 19ex !important;
+}
+
+.playerStatsHd{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.playerStatsTbody{
+  font-size: 20px !important;
+  font-weight: bolder;
+  color: rgb(204, 0, 0);
+
+}
+
+
+.opponentStats{
+  border-color: #396bba;
+  background-color: #ffe927;
+  border-radius: 19ex !important;
+
+}
+
+.opponentStatsHd{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.opponentStatsTbody{
+  font-size: 20px !important;
+  font-weight: bolder;
+  color: rgb(204, 0, 0);
+
+}
+
+.btnAtk{
+  background-color: #ff0000 !important ;
+  border-radius: 1ex !important;
+  border-style: solid !important;
+  border-width: 6px !important;
+  border-color: black !important;
+  
+
+}
+
+
+
+.btnRun{
+  background-color: #00b600 !important ;
+  border-radius: 10px !important;
+  border-style: solid !important;
+  border-width: 6px !important;
+  border-color: black !important;
+  
+
+}
+
+.playerHealth{
+  color: #000000;
+  font-weight: bolder;
+  font-size: 5ex;
+}
+
+
+.oppenentHealth{
+  color: #000000;
+  font-weight: bolder;
+  font-size: 5ex;
+}
+
+
+
+.jumbotron-fluid{
+  background-color: #000000 !important;
+  border-style: solid;
+  margin-top: 250px;
+  border-radius: 12ex !important;
+  
+}
+
+.opponentTitle{
+  color: #396bba;
+  border-radius: 8ex;
+border-style: solid;
+border-color: #396bba;
+border-width: 1ex;
+background-color: #ffe927;
+}
+
+.playerTitle{
+  color: #396bba;
+  border-radius: 8ex;
+border-style: solid;
+border-color: #396bba;
+border-width: 1ex;
+background-color: #ffe927;
+
+
+}
+
+
+.opponent{
+  color: #000000;
+  font-weight: 900;
+  font-size: 70px;
+  margin: 20px;
+  border-color: #000000;
+  border-bottom: solid;
+  border-width: 5px;
+  text-transform: uppercase;
+
+}
+
+.opponentName {
+  color: #396bba;
+  margin: 20px;
+  font-style: italic;
+  font-size: 40px;
+text-transform: capitalize;}
+
+.playerUser{
+  color: #000000;
+  font-weight: 900;
+  font-size: 70px;
+  margin: 20px;
+  border-color: #000000;
+  border-bottom: solid;
+  border-width: 5px;
+  text-transform: uppercase;
+
+
+}
+
+.playerMutamon{
+  color: #396bba;
+  margin: 20px;
+  font-style: italic;
+  font-size: 40px;
+  text-transform: capitalize;
+
+}
+
+.text-input{
+  margin-top: 10%;
+}
+

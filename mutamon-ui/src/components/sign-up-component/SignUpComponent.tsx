@@ -1,9 +1,10 @@
 import { User } from "../../models/user"
 import React, { SyntheticEvent } from "react"
 import { Redirect } from "react-router"
-import { Alert, Form, FormGroup, Label, Col, Input, Button } from "reactstrap"
+import { Alert, Form, FormGroup, Label, Col, Input, Button, Container, Row } from "reactstrap"
 import { mutamonApiMakeNewUser } from "../../remote/mutamon-clients/mutamon-users"
 import { Link } from "react-router-dom"
+import Monsterpic from "../../assests/MutamonCreateAcct.png"
 
 interface ISignUpComponentProps {
     user: User
@@ -80,41 +81,58 @@ export class SignUpComponent extends React.Component<ISignUpComponentProps, any>
 
     render() {
         return (
-            <div id="login-div">
-                {this.state.invalidCredentials && this.userInUse()}
-                <Form onSubmit={this.submitSignUp} className='login-form'>
-                    <FormGroup row className="text-input">
-                        <Label for="exampleUsername" id="" sm={2}>Username: </Label>
-                        <Col sm={10}>
-                            <Input
-                                type="text"
-                                name="Username"
-                                id="exampleUsername"
-                                placeholder="username"
-                                value={this.state.username}
-                                onChange={this.updateUsername}
-                            />
-                        </Col>
-                    </FormGroup>
-                    <br />
-                    <FormGroup row className="text-input">
-                        <Label for="examplePassword" sm={2}>Password: </Label>
-                        <Col sm={10}>
-                            <Input
-                                type="password"
-                                name="Password"
-                                id="examplePassword"
-                                placeholder="password"
-                                value={this.state.password}
-                                onChange={this.updatePassword}
-                            />
-                        </Col>
-                    </FormGroup>
-                    <Button color="primary">Sign Up</Button>
-                </Form>
-                <Link to='/login'><Button>Back to Login</Button></Link>
-                {this.state.userLogedIn && this.goToHome()}
 
+            <div id="login-div">
+
+                {this.state.invalidCredentials && this.userInUse()}
+                <img id='CreateAcct' src={Monsterpic} alt='Monster' />
+
+                <Container>
+                    <Row>
+                        <Col></Col>
+
+                        <Col>
+                            <Form onSubmit={this.submitSignUp} className='login-form'>
+                                <FormGroup row className="text-input">
+                                    <Label for="exampleUsername" id="" lg={12} style={{ fontWeight: "bold" }}>Username: </Label>
+                                    <Row></Row>
+                                    <Container className="themed-container">
+
+                                        <Input className = "signUpUser"
+                                            type="text"
+                                            name="Username"
+                                            id="exampleUsername"
+                                            placeholder="username"
+                                            value={this.state.username}
+                                            onChange={this.updateUsername}
+                                        />
+                                    </Container>
+                                </FormGroup>
+
+                                <FormGroup row className="text-input">
+                                    <Label for="examplePassword" sm={12} style={{ fontWeight: "bold" }}>Password: </Label>
+                                    <Container className="themed-container">
+                                        <Input
+                                            type="password"
+                                            name="Password"
+                                            id="examplePassword"
+                                            placeholder="password"
+                                            value={this.state.password}
+                                            onChange={this.updatePassword}
+                                        />
+                                    </Container>
+                                </FormGroup>
+                                <Button color="primary" size="lg" block>Sign Up</Button>
+                            </Form>
+                            <Link to='/login'><Button>Back to Login</Button></Link>
+                            <Row></Row>
+                            <Col></Col>
+                            {this.state.userLogedIn && this.goToHome()}
+                        </Col>
+                        <Col></Col>
+
+                    </Row>
+                </Container>
             </div>
         )
     }
