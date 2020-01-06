@@ -1,6 +1,6 @@
 
 import React from "react";
-import Monsterpic from "../../assests/monster10.jpg"
+import Monsterpic from "../../assests/test2.png"
 import NavbarComponent from "../navbar-component/NavbarContainer";
 import { Monster } from "../../models/monster";
 import { Button, Container, Row, Col } from "reactstrap";
