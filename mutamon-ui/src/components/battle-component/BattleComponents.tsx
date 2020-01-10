@@ -436,7 +436,7 @@ export class BattleComponent extends React.Component<IBattleComponentProps, IBat
                             <br />
 
                             <Button onClick={this.escape} color="danger" className="btnRun" id="btnRun" disabled={this.state.fightOver}>
-                                <h4>escape</h4>
+                                <h4>Escape</h4>
                             </Button>{' '}
 
                         </div>
